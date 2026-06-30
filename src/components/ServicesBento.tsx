@@ -1,52 +1,119 @@
-// High-level overview of our services as a bento grid. Layout mirrors the
-// reference: one wide card + one card on the top row, three on the bottom.
-// Detailed per-service cards live elsewhere; this is the teaser/overview.
+// Services overview as a bento grid. Layout: a wide card + a card on row 1,
+// three cards on row 2, then a mirrored row 3 (a card + a wide card). The two
+// wide cards (first + last) span two columns; CSS grid auto-flow places the
+// rest. Detailed content lives here; this is the services overview.
 
 type Service = {
-  caption: string
-  badge: string
-  desc: string
+  title: string
+  tagline: string
+  items: string[]
   tint: string
-  className: string
   big?: boolean
 }
 
 const services: Service[] = [
   {
-    caption: 'The front door',
-    badge: 'AI Audit',
-    desc: 'We map how your business runs and exactly where AI fits — you leave with a written roadmap.',
+    title: 'AI Strategy & Consulting',
+    tagline: 'Understand where AI can create the biggest impact.',
+    items: [
+      'Business Audit',
+      'Business Analysis',
+      'Competitor Analysis',
+      'AI Readiness Assessment',
+      'AI Roadmap',
+      'Opportunity Identification',
+    ],
     tint: '#ecfdf5', // emerald
-    className: 'md:col-span-2 md:min-h-[340px]',
     big: true,
   },
   {
-    caption: 'For owners & operators',
-    badge: 'Consulting',
-    desc: 'Hands-on, 1:1 setup and training to get you running modern AI with confidence.',
+    title: 'AI Training & Education',
+    tagline: 'Empower your team to confidently use AI.',
+    items: [
+      'Personal Setup',
+      'Basic Training',
+      'Goal-Focused Training',
+      '1-on-1 Coaching',
+      'Team Training',
+      'Local Workshops',
+      'Zoom Workshops',
+      'Prompt Engineering',
+      'Frontier Models & Apps (Beginner)',
+      'Frontier Models & Apps (Advanced)',
+    ],
     tint: '#eef0fb', // lavender
-    className: 'md:min-h-[340px]',
   },
   {
-    caption: 'For your whole team',
-    badge: 'Team Training',
-    desc: 'The same playbook, delivered to your staff so AI sticks across the business.',
+    title: 'AI Automation & Workflows',
+    tagline: 'Eliminate repetitive work with intelligent automation.',
+    items: [
+      'Workflow Automation',
+      'Scheduled Tasks',
+      'Cron Jobs',
+      'AI Workflows',
+      'Connecting Apps',
+      'API Integrations',
+      'Process Optimization',
+      'Business Automation',
+    ],
     tint: '#fbf8ee', // cream
-    className: '',
   },
   {
-    caption: 'We build it for you',
-    badge: 'Done-For-You',
-    desc: 'Custom tools, apps, dashboards, integrations, and agents — shipped and working.',
+    title: 'AI Agents & Custom Systems',
+    tagline: 'Build AI employees tailored to your business.',
+    items: [
+      'AI Agents',
+      'Multi-Agent Systems',
+      'Hermes Setup',
+      'OpenClaw Setup',
+      'Custom AI Tools',
+      'Internal AI Assistants',
+      'Knowledge Systems',
+      'Business Copilots',
+    ],
     tint: '#f1f3f7', // slate
-    className: '',
   },
   {
-    caption: 'Ongoing partnership',
-    badge: 'Support',
-    desc: 'A monthly retainer that maintains and keeps improving everything we build.',
+    title: 'Custom Software & Digital Solutions',
+    tagline: 'Custom software built around your workflow.',
+    items: [
+      'Websites',
+      'Web Applications',
+      'Internal Dashboards',
+      'Customer Portals',
+      'Business Software',
+      'Custom Integrations',
+    ],
     tint: '#fbeef0', // rose
-    className: '',
+  },
+  {
+    title: 'AI Productivity & Operations',
+    tagline: 'Create a smarter way to work every day.',
+    items: [
+      'Memory Management',
+      'Obsidian Workflows',
+      'File Organization',
+      'Assisted Research',
+      'Documentation',
+      'Copywriting',
+      'Knowledge Management',
+      'Productivity Systems',
+    ],
+    tint: '#eef4fb', // sky
+  },
+  {
+    title: 'Design & Brand Systems',
+    tagline: 'Professional assets powered by AI and automation.',
+    items: [
+      'Brand Systems',
+      'Design Systems',
+      'Templates',
+      'UI/UX Design',
+      'Marketing Assets',
+      'Visual Content',
+    ],
+    tint: '#ecfdf5', // emerald
+    big: true,
   },
 ]
 
@@ -75,23 +142,32 @@ export default function ServicesBento() {
         <div className="mt-14 grid grid-cols-1 gap-4 md:grid-cols-3">
           {services.map((s) => (
             <div
-              key={s.badge}
-              className={`flex min-h-[200px] flex-col justify-end rounded-2xl border border-line p-7 md:min-h-[220px] ${s.className}`}
+              key={s.title}
+              className={`flex flex-col rounded-2xl border border-line p-7 ${
+                s.big ? 'md:col-span-2 md:p-9' : ''
+              }`}
               style={{ background: s.tint }}
             >
-              <p className="text-sm font-semibold text-fg/55">{s.caption}</p>
-              <span
-                className={`mt-3 inline-block self-start rounded-full bg-[#1a1a1a] px-5 py-2.5 font-display font-black uppercase tracking-tight text-white ${
-                  s.big ? 'text-xl' : 'text-base'
-                }`}
-              >
-                {s.badge}
-              </span>
+              <h3 className={`${s.big ? 'lh-h2' : 'lh-h4'} text-fg`}>
+                {s.title}
+              </h3>
               <p
-                className={`mt-4 text-sm text-muted ${s.big ? 'max-w-md' : ''}`}
+                className={`mt-3 text-muted ${s.big ? 'lh-body-lg' : 'text-sm'}`}
               >
-                {s.desc}
+                {s.tagline}
               </p>
+              <ul className={`flex flex-wrap gap-2 ${s.big ? 'mt-7' : 'mt-5'}`}>
+                {s.items.map((item) => (
+                  <li
+                    key={item}
+                    className={`rounded-full border border-black/5 bg-white/70 font-medium text-fg/75 ${
+                      s.big ? 'px-4 py-1.5 text-sm' : 'px-3 py-1 text-xs'
+                    }`}
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>
