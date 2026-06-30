@@ -1,4 +1,5 @@
 import Button from '../components/Button'
+import BeamsBackground from '../components/BeamsBackground'
 import CTABand from '../components/CTABand'
 import {
   tiers,
@@ -11,31 +12,30 @@ import {
 export default function Home() {
   return (
     <>
-      {/* 1. Hero — the problem */}
-      <section className="relative overflow-hidden bg-canvas">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute left-1/2 top-0 h-[520px] w-[520px] -translate-x-1/2 rounded-full opacity-[0.07] blur-[130px]"
-          style={{ background: 'radial-gradient(circle, #059669, transparent 70%)' }}
-        />
-        <div className="relative mx-auto max-w-4xl px-5 pb-24 pt-20 text-center sm:pt-24">
-          <h1 className="lh-display-3 mx-auto text-fg">
+      {/* 1. Hero — the problem (dark band, glowing emerald beams) */}
+      <section className="relative flex min-h-[88vh] w-full items-center overflow-hidden bg-[#0b0b0c]">
+        <BeamsBackground />
+        <div className="relative z-10 mx-auto max-w-4xl px-5 py-24 text-center">
+          <h1 className="lh-display-3 mx-auto text-white">
             You keep hearing about AI.{' '}
-            <span className="lh-accent-text">
+            <span className="text-[#10b981]">
               You just don’t know where to start.
             </span>
           </h1>
-          <p className="mx-auto mt-7 max-w-2xl text-muted lh-body-lg">
+          <p className="mx-auto mt-7 max-w-2xl text-white/70 lh-body-lg">
             Everyone knows AI matters — what it is, what it can do, the
             businesses it’s changing. But actually understanding where it fits
             and where to begin takes time most small businesses don’t have.
           </p>
-          <p className="mx-auto mt-4 max-w-2xl font-semibold text-fg lh-body-lg">
+          <p className="mx-auto mt-4 max-w-2xl font-semibold text-white lh-body-lg">
             That’s the part we handle for you.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button to={onboardingCta.to}>{onboardingCta.label}</Button>
-            <a href="#how" className="lh-btn lh-btn-secondary">
+            <a
+              href="#how"
+              className="lh-btn border border-white/25 bg-transparent text-white transition-colors hover:border-white/50 hover:bg-white/10"
+            >
               See how it works
             </a>
           </div>
