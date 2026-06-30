@@ -16,7 +16,7 @@ export default function Audit() {
       <section className="relative overflow-hidden bg-canvas">
         <div
           aria-hidden
-          className="pointer-events-none absolute -left-40 top-10 h-[480px] w-[480px] rounded-full opacity-25 blur-[120px]"
+          className="pointer-events-none absolute -left-40 top-10 h-[480px] w-[480px] rounded-full opacity-15 blur-[130px]"
           style={{ background: 'radial-gradient(circle, #389750, transparent 70%)' }}
         />
         <div className="relative mx-auto max-w-4xl px-5 pb-20 pt-24 text-center">

@@ -90,20 +90,20 @@
   --lh-glow-warm: #ffb257;
   --lh-glow-warm-2: #ff8a1f;
 
-  /* === SEMANTIC — DARK (default) === */
-  --lh-bg: var(--lh-canvas);
-  --lh-bg-elev-1: var(--lh-dark-1);
-  --lh-bg-elev-2: var(--lh-dark-2);
-  --lh-bg-inverse: var(--lh-light-2);
+  /* === SEMANTIC — LIGHT (default; dark mode removed) === */
+  --lh-bg: var(--lh-light-0);
+  --lh-bg-elev-1: var(--lh-light-1);
+  --lh-bg-elev-2: var(--lh-light-2);
+  --lh-bg-inverse: var(--lh-dark-2);
 
-  --lh-fg: var(--lh-paper);
-  --lh-fg-muted: #b8b8b8;
-  --lh-fg-subtle: #8a8a8a;
-  --lh-fg-disabled: #5a5a5a;
-  --lh-fg-inverse: var(--lh-black);
+  --lh-fg: var(--lh-light-ink);
+  --lh-fg-muted: var(--lh-light-fg-2);
+  --lh-fg-subtle: var(--lh-light-fg-3);
+  --lh-fg-disabled: #b8b8b8;
+  --lh-fg-inverse: var(--lh-paper);
 
-  --lh-border: rgba(255, 255, 255, 0.06);
-  --lh-border-strong: rgba(255, 255, 255, 0.12);
+  --lh-border: rgba(0, 0, 0, 0.07);
+  --lh-border-strong: rgba(0, 0, 0, 0.12);
 
   --lh-accent: var(--lh-green-500);
   --lh-accent-fg: var(--lh-paper);
@@ -125,8 +125,14 @@
     inset -3px -3px 8px rgba(255, 255, 255, 0.04);
 
   /* LIGHT raised */
+  --lh-neu-l-sm: -3px -3px 6px rgba(255, 255, 255, 0.9),
+    3px 3px 8px rgba(174, 174, 192, 0.4);
   --lh-neu-l-md: -6px -6px 14px rgba(255, 255, 255, 1),
     8px 8px 22px rgba(174, 174, 192, 0.45);
+  --lh-neu-l-lg: -10px -10px 26px rgba(255, 255, 255, 1),
+    14px 14px 36px rgba(174, 174, 192, 0.5);
+  --lh-neu-l-xl: -16px -16px 42px rgba(255, 255, 255, 1),
+    22px 22px 56px rgba(174, 174, 192, 0.55);
   --lh-neu-l-pressed: inset 4px 4px 10px rgba(174, 174, 192, 0.55),
     inset -3px -3px 8px rgba(255, 255, 255, 1);
 
@@ -152,13 +158,13 @@
   --lh-font-mono: ui-monospace, 'JetBrains Mono', 'SF Mono', Menlo, monospace;
 
   /* === TYPE SCALE === */
-  --lh-display-1-size: clamp(72px, 11vw, 200px);
-  --lh-display-2-size: clamp(56px, 8vw, 140px);
-  --lh-display-3-size: clamp(40px, 5vw, 88px);
-  --lh-h1-size: 56px;
-  --lh-h2-size: 40px;
-  --lh-h3-size: 28px;
-  --lh-h4-size: 20px;
+  --lh-display-1-size: clamp(56px, 9vw, 132px);
+  --lh-display-2-size: clamp(44px, 6vw, 88px);
+  --lh-display-3-size: clamp(32px, 4.2vw, 58px);
+  --lh-h1-size: clamp(30px, 3.4vw, 44px);
+  --lh-h2-size: clamp(24px, 2.6vw, 34px);
+  --lh-h3-size: 24px;
+  --lh-h4-size: 19px;
 
   /* === MOTION === */
   --lh-ease-out: cubic-bezier(0.2, 0.7, 0.15, 1);
@@ -197,7 +203,7 @@ body {
   font-size: 15px;
   line-height: 1.6;
   font-weight: 400;
-  color-scheme: dark;
+  color-scheme: light;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -308,19 +314,19 @@ body {
 /* ---------- SURFACES ---------- */
 
 .lh-surface-d {
-  background: var(--lh-dark-2);
+  background: var(--lh-light-2);
   border-radius: var(--lh-r-3);
-  box-shadow: var(--lh-neu-d-md);
+  box-shadow: var(--lh-neu-l-md);
 }
 .lh-surface-d-lg {
-  background: var(--lh-dark-2);
+  background: var(--lh-light-2);
   border-radius: var(--lh-r-4);
-  box-shadow: var(--lh-neu-d-lg);
+  box-shadow: var(--lh-neu-l-lg);
 }
 .lh-pressed-d {
-  background: var(--lh-dark-1);
+  background: var(--lh-light-1);
   border-radius: var(--lh-r-3);
-  box-shadow: var(--lh-neu-d-pressed);
+  box-shadow: var(--lh-neu-l-pressed);
 }
 .lh-glow-green {
   box-shadow: var(--lh-glow-green);
@@ -367,28 +373,29 @@ body {
 }
 
 .lh-btn-secondary {
-  background: linear-gradient(180deg, #363636, #232323);
+  background: linear-gradient(180deg, #ffffff, #ececec);
+  color: var(--lh-light-ink);
   font-weight: 600;
-  box-shadow: -3px -3px 8px rgba(255, 255, 255, 0.05),
-    6px 6px 14px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 255, 255, 0.06),
-    inset 1px 1px 0 rgba(255, 255, 255, 0.1);
+  box-shadow: -3px -3px 8px rgba(255, 255, 255, 0.9),
+    6px 6px 14px rgba(174, 174, 192, 0.5), 0 0 0 1px rgba(0, 0, 0, 0.04),
+    inset 1px 1px 0 rgba(255, 255, 255, 0.7);
 }
 .lh-btn-secondary:hover {
-  box-shadow: -3px -3px 8px rgba(255, 255, 255, 0.06),
-    8px 8px 18px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.1),
-    inset 1px 1px 0 rgba(255, 255, 255, 0.12);
+  box-shadow: -3px -3px 8px rgba(255, 255, 255, 1),
+    8px 8px 18px rgba(174, 174, 192, 0.6), 0 0 0 1px rgba(0, 0, 0, 0.06),
+    inset 1px 1px 0 rgba(255, 255, 255, 0.85);
 }
 
 .lh-btn-ghost {
   background: transparent;
-  color: var(--lh-fg-muted);
+  color: var(--lh-light-fg-2);
   font-weight: 600;
   padding: 13px 24px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(0, 0, 0, 0.18);
 }
 .lh-btn-ghost:hover {
-  color: var(--lh-paper);
-  border-color: rgba(255, 255, 255, 0.28);
+  color: var(--lh-light-ink);
+  border-color: rgba(0, 0, 0, 0.4);
 }
 
 /* ---------- EYEBROW WITH DOT ---------- */
@@ -414,12 +421,12 @@ body {
   height: 11px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--lh-canvas);
+  background: var(--lh-light-0);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--lh-dark-2);
+  background: #c2c2c8;
   border-radius: 99px;
-  border: 3px solid var(--lh-canvas);
+  border: 3px solid var(--lh-light-0);
 }
 
 /* ---------- SCROLL-REVEAL (view-timeline, progressive) ---------- */

@@ -11,12 +11,12 @@ export default function Home() {
         {/* ambient green bloom */}
         <div
           aria-hidden
-          className="pointer-events-none absolute -right-40 top-0 h-[520px] w-[520px] rounded-full opacity-30 blur-[120px]"
+          className="pointer-events-none absolute -right-40 top-0 h-[520px] w-[520px] rounded-full opacity-15 blur-[130px]"
           style={{ background: 'radial-gradient(circle, #389750, transparent 70%)' }}
         />
-        <div className="relative mx-auto max-w-6xl px-5 pb-28 pt-24 sm:pt-28">
+        <div className="relative mx-auto max-w-6xl px-5 pb-24 pt-20 sm:pt-24">
           <Eyebrow>Design system &amp; AI for local business</Eyebrow>
-          <h1 className="lh-display-2 mt-7 max-w-5xl text-fg">
+          <h1 className="lh-display-3 mt-6 max-w-4xl text-fg">
             AI that <span className="lh-accent-text">actually works</span> for
             your business
           </h1>

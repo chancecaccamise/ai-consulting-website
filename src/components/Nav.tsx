@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { nav, primaryCta, site } from '../site.config'
 import Button from './Button'
-import markWhite from '/brand/lh-mark-white.png'
+import markBlack from '/brand/lh-mark-black.png'
 
 export default function Nav() {
   const [open, setOpen] = useState(false)
@@ -16,7 +16,7 @@ export default function Nav() {
           onClick={() => setOpen(false)}
         >
           <img
-            src={markWhite}
+            src={markBlack}
             alt=""
             className="h-8 w-8 object-contain"
             width={32}

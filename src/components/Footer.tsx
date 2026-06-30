@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { nav, site, primaryCta, bookCta } from '../site.config'
-import markWhite from '/brand/lh-mark-white.png'
+import markBlack from '/brand/lh-mark-black.png'
 
 export default function Footer() {
   const year = 2026 // static build; update or compute as needed
@@ -11,7 +11,7 @@ export default function Footer() {
           <div className="max-w-xs">
             <div className="flex items-center gap-3">
               <img
-                src={markWhite}
+                src={markBlack}
                 alt=""
                 className="h-8 w-8 object-contain"
                 width={32}
