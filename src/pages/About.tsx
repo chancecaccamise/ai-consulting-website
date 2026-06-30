@@ -1,19 +1,21 @@
+import Eyebrow from '../components/Eyebrow'
 import CTABand from '../components/CTABand'
 import { bookCta } from '../site.config'
 
 export default function About() {
   return (
     <>
-      <section className="bg-paper">
-        <div className="mx-auto max-w-3xl px-5 py-24">
-          <h1 className="text-5xl font-extrabold text-ink sm:text-6xl">
-            We ship real systems.
+      <section className="bg-canvas">
+        <div className="mx-auto max-w-3xl px-5 pb-12 pt-24">
+          <Eyebrow>Who we are</Eyebrow>
+          <h1 className="lh-display-3 mt-7 text-fg">
+            We ship <span className="lh-accent-text">real systems.</span>
           </h1>
-          <div className="mt-8 space-y-6 text-lg text-muted">
+          <div className="mt-9 space-y-6 text-muted lh-body-lg">
             <p>
-              We’re not a course and we’re not resellers. We build and ship
-              real AI tools, apps, and automations for a living — and we bring
-              that same hands-on work to local small businesses.
+              We’re not a course and we’re not resellers. We build and ship real
+              AI tools, apps, and automations for a living — and we bring that
+              same hands-on work to local small businesses.
             </p>
             <p>
               Most owners know AI matters but don’t have the time to sort hype

@@ -1,40 +1,53 @@
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { nav, site, primaryCta } from '../site.config'
+import { nav, primaryCta, site } from '../site.config'
 import Button from './Button'
+import markWhite from '/brand/lh-mark-white.png'
 
 export default function Nav() {
   const [open, setOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-paper/80 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
+    <header className="sticky top-0 z-50 border-b border-line bg-canvas/80 backdrop-blur-md">
+      <div className="mx-auto flex h-[72px] max-w-6xl items-center justify-between px-5">
         <Link
           to="/"
-          className="text-base font-bold tracking-tight text-ink"
+          className="flex items-center gap-3"
           onClick={() => setOpen(false)}
         >
-          {site.name}
+          <img
+            src={markWhite}
+            alt=""
+            className="h-8 w-8 object-contain"
+            width={32}
+            height={32}
+          />
+          <span className="flex flex-col leading-none">
+            <span className="font-display text-base font-black uppercase tracking-tight text-fg">
+              {site.name}
+            </span>
+            <span className="lh-eyebrow !text-[9px] !tracking-[0.22em] text-subtle">
+              {site.studio}
+            </span>
+          </span>
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-9 md:flex">
           {nav.map((item) => (
             <NavLink
               key={item.to}
               to={item.to}
               className={({ isActive }) =>
-                `text-sm font-medium transition-colors hover:text-ink ${
-                  isActive ? 'text-ink' : 'text-muted'
+                `lh-label transition-colors hover:text-fg ${
+                  isActive ? 'text-green' : 'text-muted'
                 }`
               }
             >
               {item.label}
             </NavLink>
           ))}
-          <Button to={primaryCta.to} className="px-5 py-2">
-            {primaryCta.label}
-          </Button>
+          <Button to={primaryCta.to}>{primaryCta.label}</Button>
         </nav>
 
         {/* Mobile toggle */}
@@ -43,9 +56,16 @@ export default function Nav() {
           aria-label="Toggle menu"
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="flex h-10 w-10 items-center justify-center rounded-lg text-ink md:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-lg text-fg md:hidden"
         >
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
             {open ? (
               <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" />
             ) : (
@@ -57,7 +77,7 @@ export default function Nav() {
 
       {/* Mobile menu */}
       {open && (
-        <nav className="border-t border-line bg-paper px-5 py-4 md:hidden">
+        <nav className="border-t border-line bg-canvas px-5 py-4 md:hidden">
           <div className="flex flex-col gap-1">
             {nav.map((item) => (
               <NavLink
@@ -65,18 +85,15 @@ export default function Nav() {
                 to={item.to}
                 onClick={() => setOpen(false)}
                 className={({ isActive }) =>
-                  `rounded-lg px-3 py-2.5 text-sm font-medium ${
-                    isActive ? 'bg-mist text-ink' : 'text-muted'
+                  `lh-label rounded-lg px-3 py-3 ${
+                    isActive ? 'text-green' : 'text-muted'
                   }`
                 }
               >
                 {item.label}
               </NavLink>
             ))}
-            <Button
-              to={primaryCta.to}
-              className="mt-2 w-full"
-            >
+            <Button to={primaryCta.to} className="mt-3 w-full">
               {primaryCta.label}
             </Button>
           </div>

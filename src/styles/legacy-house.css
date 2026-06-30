@@ -1,0 +1,460 @@
+/* ============================================================
+   LEGACY HOUSE — DESIGN SYSTEM
+   Soft 3D / neumorphic. Dark-default canvas, light opt-in.
+   Adapted from ds/colors_and_type.css + Component Gallery.
+   ============================================================ */
+
+/* ---------- FONT FACES ---------- */
+
+@font-face {
+  font-family: 'Media Sans Extended';
+  src: url('/fonts/MediaSansExtended-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Media Sans Extended';
+  src: url('/fonts/MediaSansExtended-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Media Sans Extended';
+  src: url('/fonts/MediaSansExtended-Ultra.ttf') format('truetype');
+  font-weight: 950;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-VariableFont_wght.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-Italic-VariableFont_wght.ttf')
+    format('truetype-variations');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ---------- TOKENS ---------- */
+
+:root {
+  /* === BRAND CORE (locked) === */
+  --lh-black: #000000;
+  --lh-graphite: #2b2b2b;
+  --lh-green: #389750;
+  --lh-paper: #fafafa;
+
+  /* === SECONDARY ACCENT === */
+  --lh-flame: #ff4a1c;
+  --lh-flame-deep: #d8330a;
+
+  /* === DARK STEPS === */
+  --lh-dark-0: #1a1a1a;
+  --lh-dark-1: #232323;
+  --lh-dark-2: #2b2b2b;
+  --lh-dark-3: #353535;
+  --lh-dark-4: #404040;
+  --lh-dark-shadow: #0a0a0a;
+
+  /* Canvas (deepest, from gallery body) */
+  --lh-canvas: #0b0b0c;
+
+  /* === LIGHT STEPS === */
+  --lh-light-0: #ececec;
+  --lh-light-1: #f2f2f2;
+  --lh-light-2: #fafafa;
+  --lh-light-3: #ffffff;
+  --lh-light-shadow: #c8c8c8;
+  --lh-light-ink: #1a1a1a;
+  --lh-light-fg-2: #5a5a5a;
+  --lh-light-fg-3: #9a9a9a;
+
+  /* === GREEN SCALE === */
+  --lh-green-50: #e8f5ec;
+  --lh-green-200: #9cd0aa;
+  --lh-green-400: #46b063;
+  --lh-green-500: #389750;
+  --lh-green-600: #2e7f42;
+  --lh-green-700: #246334;
+  --lh-green-rgb: 56, 151, 80;
+
+  /* === WARM GLOW === */
+  --lh-glow-warm: #ffb257;
+  --lh-glow-warm-2: #ff8a1f;
+
+  /* === SEMANTIC — DARK (default) === */
+  --lh-bg: var(--lh-canvas);
+  --lh-bg-elev-1: var(--lh-dark-1);
+  --lh-bg-elev-2: var(--lh-dark-2);
+  --lh-bg-inverse: var(--lh-light-2);
+
+  --lh-fg: var(--lh-paper);
+  --lh-fg-muted: #b8b8b8;
+  --lh-fg-subtle: #8a8a8a;
+  --lh-fg-disabled: #5a5a5a;
+  --lh-fg-inverse: var(--lh-black);
+
+  --lh-border: rgba(255, 255, 255, 0.06);
+  --lh-border-strong: rgba(255, 255, 255, 0.12);
+
+  --lh-accent: var(--lh-green-500);
+  --lh-accent-fg: var(--lh-paper);
+
+  --lh-success: var(--lh-green-500);
+  --lh-warning: #ffb020;
+  --lh-danger: #e5484d;
+
+  /* === NEUMORPHIC SHADOWS — DARK raised === */
+  --lh-neu-d-sm: -3px -3px 6px rgba(255, 255, 255, 0.04),
+    3px 3px 8px rgba(0, 0, 0, 0.55);
+  --lh-neu-d-md: -6px -6px 14px rgba(255, 255, 255, 0.045),
+    8px 8px 22px rgba(0, 0, 0, 0.65), inset 1px 1px 0 rgba(255, 255, 255, 0.04);
+  --lh-neu-d-lg: -10px -10px 26px rgba(255, 255, 255, 0.05),
+    14px 14px 36px rgba(0, 0, 0, 0.75), inset 1px 1px 0 rgba(255, 255, 255, 0.05);
+  --lh-neu-d-xl: -16px -16px 42px rgba(255, 255, 255, 0.05),
+    22px 22px 56px rgba(0, 0, 0, 0.85), inset 1px 1px 0 rgba(255, 255, 255, 0.06);
+  --lh-neu-d-pressed: inset 4px 4px 10px rgba(0, 0, 0, 0.7),
+    inset -3px -3px 8px rgba(255, 255, 255, 0.04);
+
+  /* LIGHT raised */
+  --lh-neu-l-md: -6px -6px 14px rgba(255, 255, 255, 1),
+    8px 8px 22px rgba(174, 174, 192, 0.45);
+  --lh-neu-l-pressed: inset 4px 4px 10px rgba(174, 174, 192, 0.55),
+    inset -3px -3px 8px rgba(255, 255, 255, 1);
+
+  /* === GLOWS === */
+  --lh-glow-green: 0 0 0 1px rgba(56, 151, 80, 0.45),
+    0 0 24px rgba(56, 151, 80, 0.45), 0 0 56px rgba(56, 151, 80, 0.22);
+  --lh-glow-flame: 0 0 0 1px rgba(255, 74, 28, 0.45),
+    0 0 24px rgba(255, 74, 28, 0.5), 0 0 56px rgba(255, 74, 28, 0.22);
+  --lh-glow-amber: 0 0 24px rgba(255, 178, 87, 0.55),
+    0 0 64px rgba(255, 138, 31, 0.32);
+
+  /* === RADII === */
+  --lh-r-1: 6px;
+  --lh-r-2: 10px;
+  --lh-r-3: 16px;
+  --lh-r-4: 22px;
+  --lh-r-5: 32px;
+  --lh-r-pill: 999px;
+
+  /* === TYPE FAMILIES === */
+  --lh-font-display: 'Media Sans Extended', 'Arial Black', system-ui, sans-serif;
+  --lh-font-body: 'Montserrat', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --lh-font-mono: ui-monospace, 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+
+  /* === TYPE SCALE === */
+  --lh-display-1-size: clamp(72px, 11vw, 200px);
+  --lh-display-2-size: clamp(56px, 8vw, 140px);
+  --lh-display-3-size: clamp(40px, 5vw, 88px);
+  --lh-h1-size: 56px;
+  --lh-h2-size: 40px;
+  --lh-h3-size: 28px;
+  --lh-h4-size: 20px;
+
+  /* === MOTION === */
+  --lh-ease-out: cubic-bezier(0.2, 0.7, 0.15, 1);
+  --lh-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --lh-dur-2: 220ms;
+  --lh-dur-3: 420ms;
+}
+
+/* ---------- LIGHT-MODE OPT-IN ---------- */
+
+.lh-theme-light {
+  --lh-bg: var(--lh-light-0);
+  --lh-bg-elev-1: var(--lh-light-1);
+  --lh-bg-elev-2: var(--lh-light-2);
+  --lh-bg-inverse: var(--lh-dark-2);
+  --lh-fg: var(--lh-light-ink);
+  --lh-fg-muted: var(--lh-light-fg-2);
+  --lh-fg-subtle: var(--lh-light-fg-3);
+  --lh-fg-disabled: #b8b8b8;
+  --lh-fg-inverse: var(--lh-paper);
+  --lh-border: rgba(0, 0, 0, 0.06);
+  --lh-border-strong: rgba(0, 0, 0, 0.12);
+}
+
+/* ---------- BASE ---------- */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 84px;
+}
+body {
+  margin: 0;
+  background: var(--lh-bg);
+  color: var(--lh-fg);
+  font-family: var(--lh-font-body);
+  font-size: 15px;
+  line-height: 1.6;
+  font-weight: 400;
+  color-scheme: dark;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+::selection {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ---------- TYPE CLASSES ---------- */
+
+.lh-display-1,
+.lh-display-2,
+.lh-display-3,
+.lh-h1,
+.lh-h2,
+.lh-h3,
+.lh-h4 {
+  font-family: var(--lh-font-display);
+  text-transform: uppercase;
+  margin: 0;
+}
+.lh-display-1 {
+  font-size: var(--lh-display-1-size);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  font-weight: 950;
+}
+.lh-display-2 {
+  font-size: var(--lh-display-2-size);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  font-weight: 900;
+}
+.lh-display-3 {
+  font-size: var(--lh-display-3-size);
+  line-height: 0.95;
+  letter-spacing: -0.015em;
+  font-weight: 900;
+}
+.lh-h1 {
+  font-size: var(--lh-h1-size);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  font-weight: 900;
+}
+.lh-h2 {
+  font-size: var(--lh-h2-size);
+  line-height: 1.05;
+  letter-spacing: -0.005em;
+  font-weight: 900;
+}
+.lh-h3 {
+  font-size: var(--lh-h3-size);
+  line-height: 1.15;
+  font-weight: 800;
+}
+.lh-h4 {
+  font-size: var(--lh-h4-size);
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+.lh-body-lg {
+  font-size: 18px;
+  line-height: 1.55;
+}
+.lh-body-sm {
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.lh-eyebrow {
+  font-family: var(--lh-font-body);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--lh-fg-muted);
+}
+.lh-label {
+  font-family: var(--lh-font-body);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.lh-mono {
+  font-family: var(--lh-font-mono);
+}
+.lh-accent-text {
+  color: var(--lh-green-500);
+}
+
+/* ---------- SURFACES ---------- */
+
+.lh-surface-d {
+  background: var(--lh-dark-2);
+  border-radius: var(--lh-r-3);
+  box-shadow: var(--lh-neu-d-md);
+}
+.lh-surface-d-lg {
+  background: var(--lh-dark-2);
+  border-radius: var(--lh-r-4);
+  box-shadow: var(--lh-neu-d-lg);
+}
+.lh-pressed-d {
+  background: var(--lh-dark-1);
+  border-radius: var(--lh-r-3);
+  box-shadow: var(--lh-neu-d-pressed);
+}
+.lh-glow-green {
+  box-shadow: var(--lh-glow-green);
+}
+
+/* ---------- BUTTONS (from Component Gallery) ---------- */
+
+.lh-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--lh-font-body);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  border: none;
+  padding: 14px 26px;
+  border-radius: var(--lh-r-pill);
+  cursor: pointer;
+  color: var(--lh-paper);
+  transition: box-shadow var(--lh-dur-2) var(--lh-ease-out),
+    transform var(--lh-dur-2) var(--lh-ease-out),
+    color var(--lh-dur-2), border-color var(--lh-dur-2);
+  text-decoration: none;
+}
+.lh-btn:active {
+  transform: translateY(1px);
+}
+
+.lh-btn-primary {
+  background: linear-gradient(180deg, var(--lh-green-400), var(--lh-green-500));
+  box-shadow: -3px -3px 8px rgba(255, 255, 255, 0.06),
+    6px 6px 14px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(var(--lh-green-rgb), 0.5),
+    0 0 22px rgba(var(--lh-green-rgb), 0.4),
+    inset 1px 1px 0 rgba(255, 255, 255, 0.28);
+}
+.lh-btn-primary:hover {
+  box-shadow: -3px -3px 8px rgba(255, 255, 255, 0.06),
+    6px 6px 14px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(var(--lh-green-rgb), 0.6),
+    0 0 34px rgba(var(--lh-green-rgb), 0.6),
+    inset 1px 1px 0 rgba(255, 255, 255, 0.28);
+}
+
+.lh-btn-secondary {
+  background: linear-gradient(180deg, #363636, #232323);
+  font-weight: 600;
+  box-shadow: -3px -3px 8px rgba(255, 255, 255, 0.05),
+    6px 6px 14px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 255, 255, 0.06),
+    inset 1px 1px 0 rgba(255, 255, 255, 0.1);
+}
+.lh-btn-secondary:hover {
+  box-shadow: -3px -3px 8px rgba(255, 255, 255, 0.06),
+    8px 8px 18px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 1px 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.lh-btn-ghost {
+  background: transparent;
+  color: var(--lh-fg-muted);
+  font-weight: 600;
+  padding: 13px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+.lh-btn-ghost:hover {
+  color: var(--lh-paper);
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+/* ---------- EYEBROW WITH DOT ---------- */
+
+.lh-eyebrow-dot {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.lh-eyebrow-dot::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--lh-green-500);
+  box-shadow: 0 0 10px rgba(var(--lh-green-rgb), 0.8);
+}
+
+/* ---------- SCROLLBAR ---------- */
+
+::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+::-webkit-scrollbar-track {
+  background: var(--lh-canvas);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--lh-dark-2);
+  border-radius: 99px;
+  border: 3px solid var(--lh-canvas);
+}
+
+/* ---------- SCROLL-REVEAL (view-timeline, progressive) ---------- */
+
+@keyframes lh-rise {
+  from {
+    opacity: 0;
+    transform: translateY(46px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes lh-rise-soft {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@supports (animation-timeline: view()) {
+  .rise {
+    opacity: 0;
+    animation: lh-rise linear both;
+    animation-timeline: view();
+    animation-range: entry 2% cover 30%;
+  }
+  .rise-soft {
+    opacity: 0;
+    animation: lh-rise-soft linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 26%;
+  }
+}

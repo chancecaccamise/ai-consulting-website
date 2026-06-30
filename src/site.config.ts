@@ -1,9 +1,10 @@
 // Single source of truth for site-wide content. Tweak copy/brand here.
 
 export const site = {
-  name: 'AI Consulting', // TODO: replace with final brand name
+  name: 'AI Sprint OS', // TODO: confirm/replace with final consulting brand name
+  studio: 'Legacy House', // studio attribution shown under the mark
   tagline: 'AI that actually works for your business',
-  email: 'hello@example.com', // TODO
+  email: 'chance@legacyhousestudio.com',
   promise:
     'We get AI working inside small businesses that don’t have time to figure it out.',
 }
