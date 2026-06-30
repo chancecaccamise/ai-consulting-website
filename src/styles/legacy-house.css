@@ -49,7 +49,7 @@
   /* === BRAND CORE (locked) === */
   --lh-black: #000000;
   --lh-graphite: #2b2b2b;
-  --lh-green: #389750;
+  --lh-green: #059669; /* emerald (accent) */
   --lh-paper: #fafafa;
 
   /* === SECONDARY ACCENT === */
@@ -68,9 +68,9 @@
   --lh-canvas: #0b0b0c;
 
   /* === LIGHT STEPS === */
-  --lh-light-0: #ececec;
-  --lh-light-1: #f2f2f2;
-  --lh-light-2: #fafafa;
+  --lh-light-0: #f7f8fa;
+  --lh-light-1: #f2f4f7;
+  --lh-light-2: #ffffff;
   --lh-light-3: #ffffff;
   --lh-light-shadow: #c8c8c8;
   --lh-light-ink: #1a1a1a;
@@ -78,13 +78,13 @@
   --lh-light-fg-3: #9a9a9a;
 
   /* === GREEN SCALE === */
-  --lh-green-50: #e8f5ec;
-  --lh-green-200: #9cd0aa;
-  --lh-green-400: #46b063;
-  --lh-green-500: #389750;
-  --lh-green-600: #2e7f42;
-  --lh-green-700: #246334;
-  --lh-green-rgb: 56, 151, 80;
+  --lh-green-50: #ecfdf5;
+  --lh-green-200: #a7f3d0;
+  --lh-green-400: #10b981;
+  --lh-green-500: #059669;
+  --lh-green-600: #047857;
+  --lh-green-700: #065f46;
+  --lh-green-rgb: 5, 150, 105;
 
   /* === WARM GLOW === */
   --lh-glow-warm: #ffb257;
@@ -137,8 +137,8 @@
     inset -3px -3px 8px rgba(255, 255, 255, 1);
 
   /* === GLOWS === */
-  --lh-glow-green: 0 0 0 1px rgba(56, 151, 80, 0.45),
-    0 0 24px rgba(56, 151, 80, 0.45), 0 0 56px rgba(56, 151, 80, 0.22);
+  --lh-glow-green: 0 0 0 1px rgba(5, 150, 105, 0.45),
+    0 0 24px rgba(5, 150, 105, 0.45), 0 0 56px rgba(5, 150, 105, 0.22);
   --lh-glow-flame: 0 0 0 1px rgba(255, 74, 28, 0.45),
     0 0 24px rgba(255, 74, 28, 0.5), 0 0 56px rgba(255, 74, 28, 0.22);
   --lh-glow-amber: 0 0 24px rgba(255, 178, 87, 0.55),
@@ -314,19 +314,28 @@ body {
 /* ---------- SURFACES ---------- */
 
 .lh-surface-d {
-  background: var(--lh-light-2);
+  background: #fff;
+  border: 1px solid var(--lh-border);
   border-radius: var(--lh-r-3);
-  box-shadow: var(--lh-neu-l-md);
+  box-shadow: none;
+  transition: box-shadow var(--lh-dur-2) var(--lh-ease-out),
+    border-color var(--lh-dur-2) var(--lh-ease-out);
+}
+.lh-surface-d:hover {
+  border-color: var(--lh-border-strong);
+  box-shadow: 0 6px 24px rgba(16, 24, 40, 0.07);
 }
 .lh-surface-d-lg {
-  background: var(--lh-light-2);
+  background: #fff;
+  border: 1px solid var(--lh-border);
   border-radius: var(--lh-r-4);
-  box-shadow: var(--lh-neu-l-lg);
+  box-shadow: none;
 }
 .lh-pressed-d {
   background: var(--lh-light-1);
+  border: 1px solid var(--lh-border);
   border-radius: var(--lh-r-3);
-  box-shadow: var(--lh-neu-l-pressed);
+  box-shadow: none;
 }
 .lh-glow-green {
   box-shadow: var(--lh-glow-green);
@@ -348,42 +357,28 @@ body {
   padding: 14px 26px;
   border-radius: var(--lh-r-pill);
   cursor: pointer;
-  color: var(--lh-paper);
-  transition: box-shadow var(--lh-dur-2) var(--lh-ease-out),
-    transform var(--lh-dur-2) var(--lh-ease-out),
-    color var(--lh-dur-2), border-color var(--lh-dur-2);
+  color: #fff;
+  transition: background-color var(--lh-dur-2) var(--lh-ease-out),
+    color var(--lh-dur-2) var(--lh-ease-out),
+    border-color var(--lh-dur-2) var(--lh-ease-out);
   text-decoration: none;
-}
-.lh-btn:active {
-  transform: translateY(1px);
 }
 
 .lh-btn-primary {
-  background: linear-gradient(180deg, var(--lh-green-400), var(--lh-green-500));
-  box-shadow: -3px -3px 8px rgba(255, 255, 255, 0.06),
-    6px 6px 14px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(var(--lh-green-rgb), 0.5),
-    0 0 22px rgba(var(--lh-green-rgb), 0.4),
-    inset 1px 1px 0 rgba(255, 255, 255, 0.28);
+  background: var(--lh-green-500);
+  color: #fff;
 }
 .lh-btn-primary:hover {
-  box-shadow: -3px -3px 8px rgba(255, 255, 255, 0.06),
-    6px 6px 14px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(var(--lh-green-rgb), 0.6),
-    0 0 34px rgba(var(--lh-green-rgb), 0.6),
-    inset 1px 1px 0 rgba(255, 255, 255, 0.28);
+  background: var(--lh-green-600);
 }
 
 .lh-btn-secondary {
-  background: linear-gradient(180deg, #ffffff, #ececec);
-  color: var(--lh-light-ink);
+  background: var(--lh-light-ink);
+  color: #fff;
   font-weight: 600;
-  box-shadow: -3px -3px 8px rgba(255, 255, 255, 0.9),
-    6px 6px 14px rgba(174, 174, 192, 0.5), 0 0 0 1px rgba(0, 0, 0, 0.04),
-    inset 1px 1px 0 rgba(255, 255, 255, 0.7);
 }
 .lh-btn-secondary:hover {
-  box-shadow: -3px -3px 8px rgba(255, 255, 255, 1),
-    8px 8px 18px rgba(174, 174, 192, 0.6), 0 0 0 1px rgba(0, 0, 0, 0.06),
-    inset 1px 1px 0 rgba(255, 255, 255, 0.85);
+  background: #000;
 }
 
 .lh-btn-ghost {
@@ -411,7 +406,6 @@ body {
   height: 8px;
   border-radius: 50%;
   background: var(--lh-green-500);
-  box-shadow: 0 0 10px rgba(var(--lh-green-rgb), 0.8);
 }
 
 /* ---------- SCROLLBAR ---------- */

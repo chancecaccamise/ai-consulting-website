@@ -16,26 +16,26 @@ export default function Home() {
       <section className="relative overflow-hidden bg-canvas">
         <div
           aria-hidden
-          className="pointer-events-none absolute -right-40 top-0 h-[520px] w-[520px] rounded-full opacity-15 blur-[130px]"
-          style={{ background: 'radial-gradient(circle, #389750, transparent 70%)' }}
+          className="pointer-events-none absolute left-1/2 top-0 h-[520px] w-[520px] -translate-x-1/2 rounded-full opacity-[0.07] blur-[130px]"
+          style={{ background: 'radial-gradient(circle, #059669, transparent 70%)' }}
         />
-        <div className="relative mx-auto max-w-6xl px-5 pb-24 pt-20 sm:pt-24">
+        <div className="relative mx-auto max-w-4xl px-5 pb-24 pt-20 text-center sm:pt-24">
           <Eyebrow>AI for local business</Eyebrow>
-          <h1 className="lh-display-3 mt-6 max-w-4xl text-fg">
+          <h1 className="lh-display-3 mx-auto mt-6 text-fg">
             You keep hearing about AI.{' '}
             <span className="lh-accent-text">
               You just don’t know where to start.
             </span>
           </h1>
-          <p className="mt-7 max-w-2xl text-muted lh-body-lg">
+          <p className="mx-auto mt-7 max-w-2xl text-muted lh-body-lg">
             Everyone knows AI matters — what it is, what it can do, the
             businesses it’s changing. But actually understanding where it fits
             and where to begin takes time most small businesses don’t have.
           </p>
-          <p className="mt-4 max-w-2xl font-semibold text-fg lh-body-lg">
+          <p className="mx-auto mt-4 max-w-2xl font-semibold text-fg lh-body-lg">
             That’s the part we handle for you.
           </p>
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button to={onboardingCta.to}>{onboardingCta.label}</Button>
             <a href="#how" className="lh-btn lh-btn-secondary">
               See how it works
@@ -62,7 +62,7 @@ export default function Home() {
             {steps.map((step) => (
               <li
                 key={step.n}
-                className="lh-surface-d rise-soft flex flex-col p-7"
+                className="lh-surface-d rise-soft flex flex-col items-center p-7 text-center"
               >
                 <span className="lh-mono lh-accent-text text-sm">
                   0{step.n}
@@ -77,13 +77,13 @@ export default function Home() {
 
       {/* 3. Who we are */}
       <section className="bg-canvas px-5 py-12">
-        <div className="lh-surface-d-lg mx-auto max-w-5xl p-10 sm:p-14">
+        <div className="lh-surface-d-lg mx-auto max-w-5xl p-10 text-center sm:p-14">
           <Eyebrow>Who we are</Eyebrow>
-          <p className="lh-h2 mt-6 max-w-3xl text-fg">
+          <p className="lh-h2 mx-auto mt-6 max-w-3xl text-fg">
             We’re small business owners who learned AI the hard way — so you
             don’t have to.
           </p>
-          <p className="mt-6 max-w-3xl text-muted lh-body-lg">
+          <p className="mx-auto mt-6 max-w-3xl text-muted lh-body-lg">
             We went through all the tedious work of learning AI and building it
             into our own businesses. Now we take everything we’ve learned and
             use it to help other owners grow — without the months of trial and
@@ -145,7 +145,7 @@ export default function Home() {
             {caseStudies.map((cs) => (
               <article
                 key={cs.name}
-                className="lh-surface-d rise-soft flex flex-col p-8"
+                className="lh-surface-d rise-soft flex flex-col items-center p-8 text-center"
               >
                 <span className="lh-eyebrow">{cs.tag}</span>
                 <span className="mt-5 font-display text-4xl font-black uppercase text-green">

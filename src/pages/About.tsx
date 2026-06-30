@@ -6,12 +6,12 @@ export default function About() {
   return (
     <>
       <section className="bg-canvas">
-        <div className="mx-auto max-w-3xl px-5 pb-12 pt-24">
+        <div className="mx-auto max-w-3xl px-5 pb-12 pt-24 text-center">
           <Eyebrow>Who we are</Eyebrow>
           <h1 className="lh-display-3 mt-7 text-fg">
             We ship <span className="lh-accent-text">real systems.</span>
           </h1>
-          <div className="mt-9 space-y-6 text-muted lh-body-lg">
+          <div className="mx-auto mt-9 space-y-6 text-muted lh-body-lg">
             <p>
               We’re not a course and we’re not resellers. We build and ship real
               AI tools, apps, and automations for a living — and we bring that

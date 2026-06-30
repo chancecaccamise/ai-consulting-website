@@ -3,7 +3,7 @@ import Eyebrow from '../components/Eyebrow'
 import { site } from '../site.config'
 
 const inputClass =
-  'mt-2 w-full rounded-xl border-none bg-[#f2f2f2] px-4 py-3 text-sm text-fg outline-none shadow-[inset_3px_3px_7px_rgba(174,174,192,.45),inset_-2px_-2px_6px_rgba(255,255,255,.95)] transition-shadow focus:shadow-[inset_3px_3px_7px_rgba(174,174,192,.4),0_0_0_1px_rgba(56,151,80,.6),0_0_16px_rgba(56,151,80,.25)]'
+  'mt-2 w-full rounded-lg border border-line bg-white px-4 py-3 text-sm text-fg outline-none transition-colors focus:border-green focus:ring-2 focus:ring-green/25'
 
 export default function Book() {
   const [submitted, setSubmitted] = useState(false)
@@ -24,7 +24,7 @@ export default function Book() {
         <div className="lh-surface-d-lg mt-12 p-8">
           {submitted ? (
             <div className="py-10 text-center">
-              <div className="lh-glow-green mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-green text-2xl text-white">
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-green text-2xl text-white">
                 ✓
               </div>
               <h2 className="lh-h3 mt-6 text-fg">Thanks!</h2>

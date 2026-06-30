@@ -4,14 +4,14 @@
 /* Map Legacy House tokens into the Tailwind theme so utilities like
    bg-canvas, text-fg, border-line resolve to brand values. */
 @theme {
-  --color-canvas: #ececec;
-  --color-surface: #fafafa;
+  --color-canvas: #f7f8fa;
+  --color-surface: #ffffff;
   --color-surface-2: #ffffff;
   --color-fg: #1a1a1a;
   --color-muted: #5a5a5a;
   --color-subtle: #9a9a9a;
-  --color-green: #389750;
-  --color-green-soft: #46b063;
+  --color-green: #059669;
+  --color-green-soft: #10b981;
   --color-flame: #ff4a1c;
   --color-line: rgba(0, 0, 0, 0.08);
   --color-line-strong: rgba(0, 0, 0, 0.12);

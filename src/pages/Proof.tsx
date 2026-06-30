@@ -21,14 +21,12 @@ export default function Proof() {
             {caseStudies.map((cs) => (
               <article
                 key={cs.name}
-                className="lh-surface-d rise-soft flex flex-col p-8"
+                className="lh-surface-d rise-soft flex flex-col items-center p-8 text-center"
               >
                 <span className="lh-eyebrow">{cs.tag}</span>
-                <div className="mt-5 flex items-baseline gap-2">
-                  <span className="font-display text-5xl font-black uppercase text-green">
-                    {cs.number}
-                  </span>
-                </div>
+                <span className="mt-5 font-display text-5xl font-black uppercase text-green">
+                  {cs.number}
+                </span>
                 <span className="mt-1 text-sm text-subtle">{cs.metric}</span>
                 <h2 className="lh-h4 mt-5 text-fg">{cs.name}</h2>
                 <p className="mt-3 text-sm text-muted">{cs.summary}</p>
