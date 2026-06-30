@@ -3,7 +3,7 @@ import CTABand from '../components/CTABand'
 import { bookCta } from '../site.config'
 
 const walkAway = [
-  'A written roadmap — prioritized and practical',
+  'A written roadmap, prioritized and practical',
   'The highest-leverage AI opportunities in your business',
   'A clear first step you can act on immediately',
   'A recommendation: Consulting, Team Training, or Done-For-You',
@@ -24,7 +24,7 @@ export default function Audit() {
           </h1>
           <p className="mx-auto mt-7 max-w-2xl text-muted lh-body-lg">
             Before we build or train anything, we figure out exactly where AI
-            fits in your business — and what to do first.
+            fits in your business, and what to do first.
           </p>
           <div className="mt-10 flex justify-center">
             <Button to="/book">Book the Audit</Button>
@@ -40,7 +40,7 @@ export default function Audit() {
               <p className="mt-4 text-muted">
                 A focused working session where we look at how your business
                 actually runs, then map where modern AI can save time, cut
-                costs, or unlock new capacity. No fluff, no hype — just a clear
+                costs, or unlock new capacity. No fluff, no hype, just a clear
                 read on what’s worth doing.
               </p>
             </div>
@@ -62,14 +62,14 @@ export default function Audit() {
               <h3 className="lh-h4 text-fg">What it costs</h3>
               <p className="mt-3 text-muted">
                 {/* TODO: decide paid vs. comped + price */}
-                Pricing TBD — paid engagement or comped with a strategy call.
+                Pricing TBD: paid engagement or comped with a strategy call.
               </p>
             </div>
             <div className="lh-pressed-d p-7">
               <h3 className="lh-h4 text-fg">What happens next</h3>
               <p className="mt-3 text-muted">
-                Your roadmap routes you into the right tier — Consulting, Team
-                Training, or Done-For-You — with ongoing support if you want it.
+                Your roadmap routes you into the right tier: Consulting, Team
+                Training, or Done-For-You, with ongoing support if you want it.
               </p>
             </div>
           </div>

@@ -18,14 +18,14 @@ export const nav = [
 // Primary funnel CTA used across the site.
 export const primaryCta = { label: 'Start with an Audit', to: '/audit' }
 export const bookCta = { label: 'Book a Call', to: '/book' }
-// Low-friction entry point — the quick onboarding call.
+// Low-friction entry point: the quick onboarding call.
 export const onboardingCta = { label: 'Book a 30-min call', to: '/book' }
 
 export const tiers = [
   {
     id: 'consulting',
     name: 'Consulting',
-    who: '1:1 for owners and solo operators — local or over Zoom.',
+    who: '1:1 for owners and solo operators, local or over Zoom.',
     blurb:
       'Personal setup, goal-focused training, and hands-on work to get you running modern AI tools with confidence.',
     points: [
@@ -40,7 +40,7 @@ export const tiers = [
   {
     id: 'team-training',
     name: 'Team Training',
-    who: 'Group training for your staff — per session or per seat.',
+    who: 'Group training for your staff, per session or per seat.',
     blurb:
       'The same proven curriculum, delivered to your whole team so AI sticks across the business.',
     points: [
@@ -56,7 +56,7 @@ export const tiers = [
     name: 'Done-For-You',
     who: 'We build the system for you.',
     blurb:
-      'Custom tools, sites, apps, dashboards, integrations, scheduled tasks, and agents — shipped and working.',
+      'Custom tools, sites, apps, dashboards, integrations, scheduled tasks, and agents, shipped and working.',
     points: [
       'Custom tools, apps & dashboards',
       'Integrations + scheduled tasks / cron',
@@ -67,7 +67,7 @@ export const tiers = [
   },
 ] as const
 
-// "How we fix it" — our process, in plain terms.
+// "How we fix it": our process, in plain terms.
 export const steps = [
   {
     n: 1,
@@ -77,7 +77,7 @@ export const steps = [
   {
     n: 2,
     title: 'We find the bottlenecks',
-    desc: 'The repetitive, time-draining tasks slowing you down — we map every one.',
+    desc: 'The repetitive, time-draining tasks slowing you down. We map every one.',
   },
   {
     n: 3,
@@ -91,7 +91,7 @@ export const steps = [
   },
 ] as const
 
-// "Why it works" — what we don't do vs. what we do.
+// "Why it works": what we do not do vs. what we do.
 export const whyItWorks = [
   {
     no: 'We don’t rip out what you’ve built.',
@@ -107,7 +107,7 @@ export const whyItWorks = [
   },
 ] as const
 
-// Projects — proof of capability. TODO: replace with real case studies.
+// Projects: proof of capability. TODO: replace with real case studies.
 export const caseStudies = [
   {
     name: 'EstimateKit',
@@ -123,7 +123,7 @@ export const caseStudies = [
     number: 'Shipped',
     metric: 'to the App Store',
     summary:
-      'Designed and shipped a consumer app end-to-end — concept to store listing.',
+      'Designed and shipped a consumer app end-to-end, concept to store listing.',
   },
   {
     name: 'Client Automation',

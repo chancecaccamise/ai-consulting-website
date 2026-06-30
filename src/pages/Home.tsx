@@ -13,7 +13,7 @@ import {
 export default function Home() {
   return (
     <>
-      {/* 1. Hero — the problem (dark band, glowing emerald beams) */}
+      {/* 1. Hero: the problem (dark band, glowing emerald beams) */}
       <section className="relative flex min-h-[88vh] w-full items-center overflow-hidden bg-[#0b0b0c]">
         <BeamsBackground />
         <div className="relative z-10 mx-auto max-w-4xl px-5 py-24 text-center">
@@ -24,7 +24,7 @@ export default function Home() {
             </span>
           </h1>
           <p className="mx-auto mt-7 max-w-2xl text-white/70 lh-body-lg">
-            Everyone knows AI matters — what it is, what it can do, the
+            Everyone knows AI matters: what it is, what it can do, the
             businesses it’s changing. But actually understanding where it fits
             and where to begin takes time most small businesses don’t have.
           </p>
@@ -43,7 +43,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. Services overview — bento grid */}
+      {/* 2. Services overview: bento grid */}
       <ServicesBento />
 
       {/* 3. How we fix it */}
@@ -80,13 +80,13 @@ export default function Home() {
       <section className="bg-canvas px-5 py-12">
         <div className="lh-surface-d-lg mx-auto max-w-5xl p-10 text-center sm:p-14">
           <p className="lh-h2 mx-auto max-w-3xl text-fg">
-            We’re small business owners who learned AI the hard way — so you
+            We’re small business owners who learned AI the hard way, so you
             don’t have to.
           </p>
           <p className="mx-auto mt-6 max-w-3xl text-muted lh-body-lg">
             We went through all the tedious work of learning AI and building it
             into our own businesses. Now we take everything we’ve learned and
-            use it to help other owners grow — without the months of trial and
+            use it to help other owners grow, without the months of trial and
             error.
           </p>
         </div>
@@ -97,7 +97,7 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-5 py-24">
           <div className="text-center">
             <h2 className="lh-h1 mx-auto max-w-3xl text-fg">
-              We expand on what you’ve built — we don’t replace it
+              We expand on what you’ve built, not replace it
             </h2>
             <p className="mx-auto mt-6 max-w-2xl text-muted lh-body-lg">
               We take your existing structure and make it better. Automate the
@@ -134,7 +134,7 @@ export default function Home() {
           <div className="text-center">
             <h2 className="lh-h1 text-fg">Projects &amp; results</h2>
             <p className="mx-auto mt-6 max-w-2xl text-muted lh-body-lg">
-              A sample of what we’ve shipped — the same capabilities we bring to
+              A sample of what we’ve shipped, the same capabilities we bring to
               your business.
             </p>
           </div>
@@ -212,10 +212,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7. CTA — quick 30-minute onboarding */}
+      {/* 7. CTA: quick 30-minute onboarding */}
       <CTABand
         title="Book a quick 30-minute call"
-        subtitle="No commitment — just a fast look at where AI can save you time and money."
+        subtitle="No commitment, just a fast look at where AI can save you time and money."
         cta={onboardingCta}
       />
     </>

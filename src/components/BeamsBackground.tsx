@@ -136,7 +136,7 @@ export default function BeamsBackground() {
       generateNoise()
 
       if (reduceMotion) {
-        // Static single frame — no animation loop.
+        // Static single frame, no animation loop.
         drawBackground()
         beamsRef.current.forEach(drawBeam)
       }

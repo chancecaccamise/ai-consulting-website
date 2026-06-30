@@ -12,7 +12,7 @@ export default function About() {
           <div className="mx-auto mt-9 space-y-6 text-muted lh-body-lg">
             <p>
               We’re not a course and we’re not resellers. We build and ship real
-              AI tools, apps, and automations for a living — and we bring that
+              AI tools, apps, and automations for a living, and we bring that
               same hands-on work to local small businesses.
             </p>
             <p>

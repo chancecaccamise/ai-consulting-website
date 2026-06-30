@@ -1,5 +1,5 @@
 /* ============================================================
-   LEGACY HOUSE — DESIGN SYSTEM
+   LEGACY HOUSE -DESIGN SYSTEM
    Soft 3D / neumorphic. Dark-default canvas, light opt-in.
    Adapted from ds/colors_and_type.css + Component Gallery.
    ============================================================ */
@@ -90,7 +90,7 @@
   --lh-glow-warm: #ffb257;
   --lh-glow-warm-2: #ff8a1f;
 
-  /* === SEMANTIC — LIGHT (default; dark mode removed) === */
+  /* === SEMANTIC -LIGHT (default; dark mode removed) === */
   --lh-bg: var(--lh-light-0);
   --lh-bg-elev-1: var(--lh-light-1);
   --lh-bg-elev-2: var(--lh-light-2);
@@ -112,7 +112,7 @@
   --lh-warning: #ffb020;
   --lh-danger: #e5484d;
 
-  /* === NEUMORPHIC SHADOWS — DARK raised === */
+  /* === NEUMORPHIC SHADOWS -DARK raised === */
   --lh-neu-d-sm: -3px -3px 6px rgba(255, 255, 255, 0.04),
     3px 3px 8px rgba(0, 0, 0, 0.55);
   --lh-neu-d-md: -6px -6px 14px rgba(255, 255, 255, 0.045),

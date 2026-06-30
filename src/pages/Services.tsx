@@ -3,8 +3,8 @@ import CTABand from '../components/CTABand'
 import { tiers, bookCta } from '../site.config'
 
 const supportPoints = [
-  'Assisted work — research, docs, copy',
-  'Design work — systems, templates, brand',
+  'Assisted work: research, docs, copy',
+  'Design work: systems, templates, brand',
   'Maintenance of anything we built for you',
 ]
 
@@ -60,14 +60,14 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Add-on — Monthly Support */}
+      {/* Add-on: Monthly Support */}
       <section className="bg-canvas px-5 py-16">
         <div className="lh-surface-d-lg mx-auto max-w-5xl p-10">
           <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
             <div className="max-w-xl">
               <h2 className="lh-h2 text-fg">Monthly Support</h2>
               <p className="mt-4 text-muted">
-                A retainer that keeps everything moving — assisted work, design,
+                A retainer that keeps everything moving: assisted work, design,
                 and maintenance of what we’ve built.
               </p>
               <ul className="mt-6 space-y-2.5">
