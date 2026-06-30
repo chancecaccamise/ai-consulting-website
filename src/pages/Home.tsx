@@ -1,5 +1,6 @@
 import Button from '../components/Button'
 import BeamsBackground from '../components/BeamsBackground'
+import ServicesBento from '../components/ServicesBento'
 import CTABand from '../components/CTABand'
 import {
   tiers,
@@ -42,7 +43,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. How we fix it */}
+      {/* 2. Services overview — bento grid */}
+      <ServicesBento />
+
+      {/* 3. How we fix it */}
       <section id="how" className="scroll-mt-24 bg-canvas">
         <div className="mx-auto max-w-6xl px-5 py-24">
           <div className="text-center">
