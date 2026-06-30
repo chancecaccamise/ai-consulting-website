@@ -1,14 +1,9 @@
 import Button from '../components/Button'
 import BeamsBackground from '../components/BeamsBackground'
 import ServicesBento from '../components/ServicesBento'
+import ProjectsCarousel from '../components/ProjectsCarousel'
 import CTABand from '../components/CTABand'
-import {
-  tiers,
-  steps,
-  whyItWorks,
-  caseStudies,
-  onboardingCta,
-} from '../site.config'
+import { tiers, steps, whyItWorks, onboardingCta } from '../site.config'
 
 export default function Home() {
   return (
@@ -128,41 +123,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. Projects */}
-      <section className="bg-canvas">
-        <div className="mx-auto max-w-6xl px-5 py-24">
-          <div className="text-center">
-            <h2 className="lh-h1 text-fg">Projects &amp; results</h2>
-            <p className="mx-auto mt-6 max-w-2xl text-muted lh-body-lg">
-              A sample of what we’ve shipped, the same capabilities we bring to
-              your business.
-            </p>
-          </div>
-
-          <div className="mt-16 grid gap-6 md:grid-cols-3">
-            {caseStudies.map((cs) => (
-              <article
-                key={cs.name}
-                className="lh-surface-d rise-soft flex flex-col items-center p-8 text-center"
-              >
-                <span className="lh-eyebrow">{cs.tag}</span>
-                <span className="mt-5 font-display text-4xl font-black uppercase text-green">
-                  {cs.number}
-                </span>
-                <span className="mt-1 text-sm text-subtle">{cs.metric}</span>
-                <h3 className="lh-h4 mt-5 text-fg">{cs.name}</h3>
-                <p className="mt-3 text-sm text-muted">{cs.summary}</p>
-              </article>
-            ))}
-          </div>
-
-          <div className="mt-12 flex justify-center">
-            <Button to="/proof" variant="secondary">
-              See more of our work
-            </Button>
-          </div>
-        </div>
-      </section>
+      {/* 5. Projects: carousel */}
+      <ProjectsCarousel />
 
       {/* 6. Pricing cards */}
       <section className="bg-canvas">

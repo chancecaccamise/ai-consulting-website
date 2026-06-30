@@ -133,4 +133,20 @@ export const caseStudies = [
     summary:
       'Automated a recurring manual workflow, freeing the owner to focus on customers.',
   },
+  {
+    name: 'Ops Dashboard',
+    tag: 'Internal tool',
+    number: 'Live',
+    metric: 'across the team',
+    summary:
+      'A real-time dashboard that replaced a tangle of spreadsheets for daily operations.',
+  },
+  {
+    name: 'Support Copilot',
+    tag: 'AI agent',
+    number: '24/7',
+    metric: 'first responses',
+    summary:
+      'An AI assistant that drafts customer replies from the company knowledge base.',
+  },
 ] as const
