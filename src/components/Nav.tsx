@@ -1,14 +1,45 @@
-import { useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import { nav, primaryCta, site } from '../site.config'
 import Button from './Button'
 import markBlack from '/brand/lh-mark-black.png'
+import markWhite from '/brand/lh-mark-white.png'
 
 export default function Nav() {
   const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const { pathname } = useLocation()
+  const isHome = pathname === '/'
+
+  // On the home page the nav overlays the dark beam hero. Track when we've
+  // scrolled past it so the nav can flip from transparent/light-text to the
+  // solid light bar. Other pages are always solid.
+  useEffect(() => {
+    if (!isHome) {
+      setScrolled(false)
+      return
+    }
+    const onScroll = () => {
+      const threshold = window.innerHeight * 0.85 - 64
+      setScrolled(window.scrollY > threshold)
+    }
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [isHome])
+
+  // Transparent, light-on-dark treatment only while over the hero and the
+  // mobile menu is closed.
+  const overHero = isHome && !scrolled && !open
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-canvas/80 backdrop-blur-md">
+    <header
+      className={`fixed top-0 z-50 w-full transition-colors duration-300 ${
+        overHero
+          ? 'border-b border-transparent bg-transparent'
+          : 'border-b border-line bg-canvas/80 backdrop-blur-md'
+      }`}
+    >
       <div className="mx-auto flex h-[72px] max-w-6xl items-center justify-between px-5">
         <Link
           to="/"
@@ -16,17 +47,25 @@ export default function Nav() {
           onClick={() => setOpen(false)}
         >
           <img
-            src={markBlack}
+            src={overHero ? markWhite : markBlack}
             alt=""
             className="h-8 w-8 object-contain"
             width={32}
             height={32}
           />
           <span className="flex flex-col leading-none">
-            <span className="font-display text-base font-black uppercase tracking-tight text-fg">
+            <span
+              className={`font-display text-base font-black uppercase tracking-tight ${
+                overHero ? 'text-white' : 'text-fg'
+              }`}
+            >
               {site.name}
             </span>
-            <span className="lh-eyebrow !text-[9px] !tracking-[0.22em] text-subtle">
+            <span
+              className={`lh-eyebrow !text-[9px] !tracking-[0.22em] ${
+                overHero ? 'text-white/60' : 'text-subtle'
+              }`}
+            >
               {site.studio}
             </span>
           </span>
@@ -39,8 +78,14 @@ export default function Nav() {
               key={item.to}
               to={item.to}
               className={({ isActive }) =>
-                `lh-label transition-colors hover:text-fg ${
-                  isActive ? 'text-green' : 'text-muted'
+                `lh-label transition-colors ${
+                  isActive
+                    ? overHero
+                      ? 'text-[#10b981]'
+                      : 'text-green'
+                    : overHero
+                      ? 'text-white/80 hover:text-white'
+                      : 'text-muted hover:text-fg'
                 }`
               }
             >
@@ -56,7 +101,9 @@ export default function Nav() {
           aria-label="Toggle menu"
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="flex h-10 w-10 items-center justify-center rounded-lg text-fg md:hidden"
+          className={`flex h-10 w-10 items-center justify-center rounded-lg md:hidden ${
+            overHero ? 'text-white' : 'text-fg'
+          }`}
         >
           <svg
             width="22"
