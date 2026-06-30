@@ -3,7 +3,7 @@ import BeamsBackground from '../components/BeamsBackground'
 import ServicesBento from '../components/ServicesBento'
 import ProjectsCarousel from '../components/ProjectsCarousel'
 import CTABand from '../components/CTABand'
-import { tiers, steps, whyItWorks, onboardingCta } from '../site.config'
+import { tiers, steps, onboardingCta } from '../site.config'
 
 export default function Home() {
   return (
@@ -87,43 +87,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. Why it works */}
-      <section className="bg-canvas">
-        <div className="mx-auto max-w-6xl px-5 py-24">
-          <div className="text-center">
-            <h2 className="lh-h1 mx-auto max-w-3xl text-fg">
-              We expand on what you’ve built, not replace it
-            </h2>
-            <p className="mx-auto mt-6 max-w-2xl text-muted lh-body-lg">
-              We take your existing structure and make it better. Automate the
-              recurring tasks, sharpen the systems, and give you back time for
-              the work you actually want to do.
-            </p>
-          </div>
-
-          <div className="mt-16 grid gap-6 md:grid-cols-3">
-            {whyItWorks.map((item) => (
-              <div
-                key={item.yes}
-                className="lh-surface-d rise-soft flex flex-col gap-4 p-7"
-              >
-                <p className="flex items-start gap-2.5 text-sm text-subtle line-through decoration-subtle/60">
-                  <span aria-hidden>✕</span>
-                  <span>{item.no}</span>
-                </p>
-                <p className="flex items-start gap-2.5 font-medium text-fg">
-                  <span className="lh-accent-text mt-0.5" aria-hidden>
-                    ✓
-                  </span>
-                  <span>{item.yes}</span>
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Projects: carousel */}
+      {/* 4. Projects: carousel */}
       <ProjectsCarousel />
 
       {/* 6. Pricing cards */}

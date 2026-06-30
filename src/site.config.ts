@@ -91,22 +91,6 @@ export const steps = [
   },
 ] as const
 
-// "Why it works": what we do not do vs. what we do.
-export const whyItWorks = [
-  {
-    no: 'We don’t rip out what you’ve built.',
-    yes: 'We expand on the business structure you already have.',
-  },
-  {
-    no: 'We don’t hand you another tool to learn.',
-    yes: 'We automate the recurring tasks so the work just gets done.',
-  },
-  {
-    no: 'We don’t add more to your plate.',
-    yes: 'We give you back time for the work you actually want to do.',
-  },
-] as const
-
 // Projects: proof of capability. TODO: replace with real case studies.
 export const caseStudies = [
   {
