@@ -1,5 +1,4 @@
 import Button from '../components/Button'
-import Eyebrow from '../components/Eyebrow'
 import CTABand from '../components/CTABand'
 import { tiers, bookCta } from '../site.config'
 
@@ -14,8 +13,7 @@ export default function Services() {
     <>
       <section className="bg-canvas">
         <div className="mx-auto max-w-4xl px-5 pb-12 pt-24 text-center">
-          <Eyebrow>What we do</Eyebrow>
-          <h1 className="lh-display-3 mt-7 text-fg">Services</h1>
+          <h1 className="lh-display-3 text-fg">Services</h1>
           <p className="mx-auto mt-7 max-w-2xl text-muted lh-body-lg">
             Three tiers, one front door. Every engagement starts with an audit
             so we point you at the right one.
@@ -67,8 +65,7 @@ export default function Services() {
         <div className="lh-surface-d-lg mx-auto max-w-5xl p-10">
           <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
             <div className="max-w-xl">
-              <Eyebrow>Add-on</Eyebrow>
-              <h2 className="lh-h2 mt-4 text-fg">Monthly Support</h2>
+              <h2 className="lh-h2 text-fg">Monthly Support</h2>
               <p className="mt-4 text-muted">
                 A retainer that keeps everything moving — assisted work, design,
                 and maintenance of what we’ve built.

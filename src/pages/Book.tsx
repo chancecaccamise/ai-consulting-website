@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import Eyebrow from '../components/Eyebrow'
 import { site } from '../site.config'
 
 const inputClass =
@@ -12,8 +11,7 @@ export default function Book() {
     <section className="bg-canvas">
       <div className="mx-auto max-w-3xl px-5 pb-24 pt-24">
         <div className="text-center">
-          <Eyebrow>Let’s talk</Eyebrow>
-          <h1 className="lh-display-3 mt-7 text-fg">Book a Call</h1>
+          <h1 className="lh-display-3 text-fg">Book a Call</h1>
           <p className="mx-auto mt-7 max-w-xl text-muted lh-body-lg">
             Tell us a little about your business and we’ll be in touch to set up
             your audit.

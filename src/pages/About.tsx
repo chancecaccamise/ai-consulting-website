@@ -1,4 +1,3 @@
-import Eyebrow from '../components/Eyebrow'
 import CTABand from '../components/CTABand'
 import { bookCta } from '../site.config'
 
@@ -7,8 +6,7 @@ export default function About() {
     <>
       <section className="bg-canvas">
         <div className="mx-auto max-w-3xl px-5 pb-12 pt-24 text-center">
-          <Eyebrow>Who we are</Eyebrow>
-          <h1 className="lh-display-3 mt-7 text-fg">
+          <h1 className="lh-display-3 text-fg">
             We ship <span className="lh-accent-text">real systems.</span>
           </h1>
           <div className="mx-auto mt-9 space-y-6 text-muted lh-body-lg">

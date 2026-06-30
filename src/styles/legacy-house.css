@@ -238,6 +238,7 @@ body {
   font-family: var(--lh-font-display);
   text-transform: uppercase;
   margin: 0;
+  text-wrap: balance;
 }
 .lh-display-1 {
   font-size: var(--lh-display-1-size);

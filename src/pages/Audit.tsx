@@ -1,5 +1,4 @@
 import Button from '../components/Button'
-import Eyebrow from '../components/Eyebrow'
 import CTABand from '../components/CTABand'
 import { bookCta } from '../site.config'
 
@@ -20,8 +19,7 @@ export default function Audit() {
           style={{ background: 'radial-gradient(circle, #059669, transparent 70%)' }}
         />
         <div className="relative mx-auto max-w-4xl px-5 pb-20 pt-24 text-center">
-          <Eyebrow>The front door</Eyebrow>
-          <h1 className="lh-display-3 mt-7 text-fg">
+          <h1 className="lh-display-3 text-fg">
             Start with an <span className="lh-accent-text">Audit</span>
           </h1>
           <p className="mx-auto mt-7 max-w-2xl text-muted lh-body-lg">
@@ -61,14 +59,14 @@ export default function Audit() {
 
           <div className="mt-6 grid gap-6 sm:grid-cols-2">
             <div className="lh-pressed-d p-7">
-              <Eyebrow dot={false}>What it costs</Eyebrow>
+              <h3 className="lh-h4 text-fg">What it costs</h3>
               <p className="mt-3 text-muted">
                 {/* TODO: decide paid vs. comped + price */}
                 Pricing TBD — paid engagement or comped with a strategy call.
               </p>
             </div>
             <div className="lh-pressed-d p-7">
-              <Eyebrow dot={false}>What happens next</Eyebrow>
+              <h3 className="lh-h4 text-fg">What happens next</h3>
               <p className="mt-3 text-muted">
                 Your roadmap routes you into the right tier — Consulting, Team
                 Training, or Done-For-You — with ongoing support if you want it.
@@ -79,7 +77,6 @@ export default function Audit() {
       </section>
 
       <CTABand
-        eyebrow="Book the audit"
         title="One session. A written roadmap."
         subtitle="A clear first step you can act on immediately."
         cta={bookCta}

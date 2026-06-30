@@ -1,5 +1,4 @@
 import Button from '../components/Button'
-import Eyebrow from '../components/Eyebrow'
 import CTABand from '../components/CTABand'
 import {
   tiers,
@@ -20,8 +19,7 @@ export default function Home() {
           style={{ background: 'radial-gradient(circle, #059669, transparent 70%)' }}
         />
         <div className="relative mx-auto max-w-4xl px-5 pb-24 pt-20 text-center sm:pt-24">
-          <Eyebrow>AI for local business</Eyebrow>
-          <h1 className="lh-display-3 mx-auto mt-6 text-fg">
+          <h1 className="lh-display-3 mx-auto text-fg">
             You keep hearing about AI.{' '}
             <span className="lh-accent-text">
               You just don’t know where to start.
@@ -48,8 +46,7 @@ export default function Home() {
       <section id="how" className="scroll-mt-24 bg-canvas">
         <div className="mx-auto max-w-6xl px-5 py-24">
           <div className="text-center">
-            <Eyebrow>How we fix it</Eyebrow>
-            <h2 className="lh-h1 mx-auto mt-5 max-w-3xl text-fg">
+            <h2 className="lh-h1 mx-auto max-w-3xl text-fg">
               We come in, find what’s slowing you down, and fix it with AI
             </h2>
             <p className="mx-auto mt-6 max-w-2xl text-muted lh-body-lg">
@@ -78,8 +75,7 @@ export default function Home() {
       {/* 3. Who we are */}
       <section className="bg-canvas px-5 py-12">
         <div className="lh-surface-d-lg mx-auto max-w-5xl p-10 text-center sm:p-14">
-          <Eyebrow>Who we are</Eyebrow>
-          <p className="lh-h2 mx-auto mt-6 max-w-3xl text-fg">
+          <p className="lh-h2 mx-auto max-w-3xl text-fg">
             We’re small business owners who learned AI the hard way — so you
             don’t have to.
           </p>
@@ -96,8 +92,7 @@ export default function Home() {
       <section className="bg-canvas">
         <div className="mx-auto max-w-6xl px-5 py-24">
           <div className="text-center">
-            <Eyebrow>Why it works</Eyebrow>
-            <h2 className="lh-h1 mx-auto mt-5 max-w-3xl text-fg">
+            <h2 className="lh-h1 mx-auto max-w-3xl text-fg">
               We expand on what you’ve built — we don’t replace it
             </h2>
             <p className="mx-auto mt-6 max-w-2xl text-muted lh-body-lg">
@@ -133,8 +128,7 @@ export default function Home() {
       <section className="bg-canvas">
         <div className="mx-auto max-w-6xl px-5 py-24">
           <div className="text-center">
-            <Eyebrow>What we’ve built</Eyebrow>
-            <h2 className="lh-h1 mt-5 text-fg">Projects &amp; results</h2>
+            <h2 className="lh-h1 text-fg">Projects &amp; results</h2>
             <p className="mx-auto mt-6 max-w-2xl text-muted lh-body-lg">
               A sample of what we’ve shipped — the same capabilities we bring to
               your business.
@@ -170,8 +164,7 @@ export default function Home() {
       <section className="bg-canvas">
         <div className="mx-auto max-w-6xl px-5 py-24">
           <div className="text-center">
-            <Eyebrow>Pricing</Eyebrow>
-            <h2 className="lh-h1 mt-5 text-fg">Ways to work with us</h2>
+            <h2 className="lh-h1 text-fg">Ways to work with us</h2>
             <p className="mx-auto mt-6 max-w-2xl text-muted lh-body-lg">
               Every engagement starts with an audit, then routes into the tier
               that fits.
@@ -217,7 +210,6 @@ export default function Home() {
 
       {/* 7. CTA — quick 30-minute onboarding */}
       <CTABand
-        eyebrow="Start here"
         title="Book a quick 30-minute call"
         subtitle="No commitment — just a fast look at where AI can save you time and money."
         cta={onboardingCta}
