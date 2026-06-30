@@ -1,13 +1,12 @@
 // Services overview as a bento grid. Layout: a wide card + a card on row 1,
 // three cards on row 2, then a mirrored row 3 (a card + a wide card). The two
 // wide cards (first + last) span two columns; CSS grid auto-flow places the
-// rest. Detailed content lives here; this is the services overview.
+// rest. Cards use the standard on-brand surface (white + hairline border).
 
 type Service = {
   title: string
   tagline: string
-  items: string[]
-  tint: string
+  desc: string
   big?: boolean
 }
 
@@ -15,104 +14,38 @@ const services: Service[] = [
   {
     title: 'AI Strategy & Consulting',
     tagline: 'Understand where AI can create the biggest impact.',
-    items: [
-      'Business Audit',
-      'Business Analysis',
-      'Competitor Analysis',
-      'AI Readiness Assessment',
-      'AI Roadmap',
-      'Opportunity Identification',
-    ],
-    tint: '#ecfdf5', // emerald
+    desc: 'We audit and analyze your business — operations, competitors, and AI readiness — then hand you a prioritized roadmap of the highest-impact opportunities to pursue first.',
     big: true,
   },
   {
     title: 'AI Training & Education',
     tagline: 'Empower your team to confidently use AI.',
-    items: [
-      'Personal Setup',
-      'Basic Training',
-      'Goal-Focused Training',
-      '1-on-1 Coaching',
-      'Team Training',
-      'Local Workshops',
-      'Zoom Workshops',
-      'Prompt Engineering',
-      'Frontier Models & Apps (Beginner)',
-      'Frontier Models & Apps (Advanced)',
-    ],
-    tint: '#eef0fb', // lavender
+    desc: 'From personal setup to 1-on-1 coaching and full team workshops — in person or over Zoom — we teach prompting and the latest frontier models, basics through advanced.',
   },
   {
     title: 'AI Automation & Workflows',
     tagline: 'Eliminate repetitive work with intelligent automation.',
-    items: [
-      'Workflow Automation',
-      'Scheduled Tasks',
-      'Cron Jobs',
-      'AI Workflows',
-      'Connecting Apps',
-      'API Integrations',
-      'Process Optimization',
-      'Business Automation',
-    ],
-    tint: '#fbf8ee', // cream
+    desc: 'We automate the repetitive work — connecting your apps through API integrations, scheduling tasks and cron jobs, and optimizing the processes that quietly eat your time.',
   },
   {
     title: 'AI Agents & Custom Systems',
     tagline: 'Build AI employees tailored to your business.',
-    items: [
-      'AI Agents',
-      'Multi-Agent Systems',
-      'Hermes Setup',
-      'OpenClaw Setup',
-      'Custom AI Tools',
-      'Internal AI Assistants',
-      'Knowledge Systems',
-      'Business Copilots',
-    ],
-    tint: '#f1f3f7', // slate
+    desc: 'Custom AI agents and multi-agent systems — copilots, internal assistants, and knowledge systems (including Hermes and OpenClaw setups) that work like dedicated employees.',
   },
   {
     title: 'Custom Software & Digital Solutions',
     tagline: 'Custom software built around your workflow.',
-    items: [
-      'Websites',
-      'Web Applications',
-      'Internal Dashboards',
-      'Customer Portals',
-      'Business Software',
-      'Custom Integrations',
-    ],
-    tint: '#fbeef0', // rose
+    desc: 'Websites, web apps, internal dashboards, customer portals, and custom integrations — built around the way your business actually works.',
   },
   {
     title: 'AI Productivity & Operations',
     tagline: 'Create a smarter way to work every day.',
-    items: [
-      'Memory Management',
-      'Obsidian Workflows',
-      'File Organization',
-      'Assisted Research',
-      'Documentation',
-      'Copywriting',
-      'Knowledge Management',
-      'Productivity Systems',
-    ],
-    tint: '#eef4fb', // sky
+    desc: 'The systems that make every day smoother — memory and knowledge management, Obsidian workflows, file organization, and assisted research, docs, and copy.',
   },
   {
     title: 'Design & Brand Systems',
     tagline: 'Professional assets powered by AI and automation.',
-    items: [
-      'Brand Systems',
-      'Design Systems',
-      'Templates',
-      'UI/UX Design',
-      'Marketing Assets',
-      'Visual Content',
-    ],
-    tint: '#ecfdf5', // emerald
+    desc: 'Brand and design systems, templates, UI/UX, and marketing assets — professional visual content produced faster with AI and automation.',
     big: true,
   },
 ]
@@ -143,31 +76,25 @@ export default function ServicesBento() {
           {services.map((s) => (
             <div
               key={s.title}
-              className={`flex flex-col rounded-2xl border border-line p-7 ${
-                s.big ? 'md:col-span-2 md:p-9' : ''
+              className={`lh-surface-d flex min-h-[200px] flex-col p-7 ${
+                s.big ? 'md:col-span-2 md:min-h-[260px] md:p-9' : ''
               }`}
-              style={{ background: s.tint }}
             >
               <h3 className={`${s.big ? 'lh-h2' : 'lh-h4'} text-fg`}>
                 {s.title}
               </h3>
               <p
-                className={`mt-3 text-muted ${s.big ? 'lh-body-lg' : 'text-sm'}`}
+                className={`mt-3 font-semibold text-green ${
+                  s.big ? 'text-base' : 'text-sm'
+                }`}
               >
                 {s.tagline}
               </p>
-              <ul className={`flex flex-wrap gap-2 ${s.big ? 'mt-7' : 'mt-5'}`}>
-                {s.items.map((item) => (
-                  <li
-                    key={item}
-                    className={`rounded-full border border-black/5 bg-white/70 font-medium text-fg/75 ${
-                      s.big ? 'px-4 py-1.5 text-sm' : 'px-3 py-1 text-xs'
-                    }`}
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
+              <p
+                className={`mt-4 text-muted ${s.big ? 'lh-body-lg' : 'text-sm'}`}
+              >
+                {s.desc}
+              </p>
             </div>
           ))}
         </div>
