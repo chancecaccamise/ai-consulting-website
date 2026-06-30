@@ -18,6 +18,8 @@ export const nav = [
 // Primary funnel CTA used across the site.
 export const primaryCta = { label: 'Start with an Audit', to: '/audit' }
 export const bookCta = { label: 'Book a Call', to: '/book' }
+// Low-friction entry point — the quick onboarding call.
+export const onboardingCta = { label: 'Book a 30-min call', to: '/book' }
 
 export const tiers = [
   {
@@ -65,25 +67,70 @@ export const tiers = [
   },
 ] as const
 
+// "How we fix it" — our process, in plain terms.
 export const steps = [
   {
     n: 1,
-    title: 'Audit',
-    desc: 'We map where AI fits in your business and what to do first.',
+    title: 'We audit your business',
+    desc: 'We learn how you actually operate and where AI can have the biggest impact.',
   },
   {
     n: 2,
-    title: 'Roadmap',
-    desc: 'You walk away with a written plan — prioritized and practical.',
+    title: 'We find the bottlenecks',
+    desc: 'The repetitive, time-draining tasks slowing you down — we map every one.',
   },
   {
     n: 3,
-    title: 'Implement',
-    desc: 'We consult, train your team, or build it for you.',
+    title: 'We improve your systems',
+    desc: 'We automate the recurring work and sharpen the systems you already run.',
   },
   {
     n: 4,
-    title: 'Support',
-    desc: 'Ongoing monthly support keeps everything running and improving.',
+    title: 'We train your team',
+    desc: 'So the improvements stick and your people can run with them.',
+  },
+] as const
+
+// "Why it works" — what we don't do vs. what we do.
+export const whyItWorks = [
+  {
+    no: 'We don’t rip out what you’ve built.',
+    yes: 'We expand on the business structure you already have.',
+  },
+  {
+    no: 'We don’t hand you another tool to learn.',
+    yes: 'We automate the recurring tasks so the work just gets done.',
+  },
+  {
+    no: 'We don’t add more to your plate.',
+    yes: 'We give you back time for the work you actually want to do.',
+  },
+] as const
+
+// Projects — proof of capability. TODO: replace with real case studies.
+export const caseStudies = [
+  {
+    name: 'EstimateKit',
+    tag: 'Custom tool',
+    number: '10x',
+    metric: 'faster quotes',
+    summary:
+      'Built an estimating tool that turned a half-day quoting process into minutes.',
+  },
+  {
+    name: 'SkateSkins App',
+    tag: 'Product build',
+    number: 'Shipped',
+    metric: 'to the App Store',
+    summary:
+      'Designed and shipped a consumer app end-to-end — concept to store listing.',
+  },
+  {
+    name: 'Client Automation',
+    tag: 'Workflow',
+    number: '15 hrs',
+    metric: 'saved per week',
+    summary:
+      'Automated a recurring manual workflow, freeing the owner to focus on customers.',
   },
 ] as const
