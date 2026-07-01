@@ -24,7 +24,7 @@ export default function HowLeftColumn({ steps, activeStep, fill }: Props) {
       </div>
 
       <h2 className="lh-h1 mt-5 max-w-xl text-fg">
-        We come in, find what&rsquo;s slowing you down, and fix it with AI
+        We find what&rsquo;s slowing you down, and fix it with AI
       </h2>
       <p className="mt-6 max-w-md text-muted lh-body-lg">
         You don&rsquo;t spend months learning AI. We audit your business, improve

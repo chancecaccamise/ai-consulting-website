@@ -202,7 +202,7 @@ body {
   text-rendering: optimizeLegibility;
 }
 ::selection {
-  background: rgba(255, 255, 255, 0.16);
+  background: rgba(5, 150, 105, 0.22);
 }
 
 @media (prefers-reduced-motion: reduce) {

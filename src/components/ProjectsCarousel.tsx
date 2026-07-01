@@ -99,7 +99,7 @@ export default function ProjectsCarousel() {
               <Link
                 key={cs.name}
                 to="/proof"
-                className="group relative h-[420px] w-[85%] shrink-0 snap-start overflow-hidden rounded-2xl sm:w-[360px] md:w-[380px]"
+                className="group relative h-[460px] w-[86%] shrink-0 snap-start overflow-hidden rounded-2xl sm:w-[420px] md:w-[460px]"
                 style={{ background: gradients[i % gradients.length] }}
               >
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/10" />

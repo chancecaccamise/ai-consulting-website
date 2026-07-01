@@ -19,7 +19,7 @@ export default function HowItWorksStacked({ steps }: Props) {
           <span className="h-px w-12 bg-line" />
         </div>
         <h2 className="lh-h1 mt-5 text-fg">
-          We come in, find what&rsquo;s slowing you down, and fix it with AI
+          We find what&rsquo;s slowing you down, and fix it with AI
         </h2>
         <p className="mt-6 text-muted lh-body-lg">
           You don&rsquo;t spend months learning AI. We audit your business,

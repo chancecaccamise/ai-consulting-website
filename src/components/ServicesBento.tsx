@@ -46,7 +46,7 @@ export default function ServicesBento() {
         <div className="grid items-start gap-8 md:grid-cols-2">
           <div>
             <h2 className="lh-h1 text-fg">
-              Everything we do to get AI working for you
+              Everything we do to get AI working
             </h2>
             <p className="mt-5 text-sm font-semibold text-green">
               Audit-first&nbsp;&nbsp;·&nbsp;&nbsp;Local or remote&nbsp;&nbsp;·&nbsp;&nbsp;Built by operators

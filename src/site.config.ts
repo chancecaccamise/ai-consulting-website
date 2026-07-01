@@ -1,7 +1,7 @@
 // Single source of truth for site-wide content. Tweak copy/brand here.
 
 export const site = {
-  name: 'AI Sprint OS', // TODO: confirm/replace with final consulting brand name
+  name: 'Northline Consulting',
   studio: 'Legacy House', // studio attribution shown under the mark
   tagline: 'AI that actually works for your business',
   email: 'chance@legacyhousestudio.com',

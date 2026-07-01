@@ -2,6 +2,7 @@ import Button from '../components/Button'
 import BeamsBackground from '../components/BeamsBackground'
 import ServicesBento from '../components/ServicesBento'
 import HowItWorks from '../components/how/HowItWorks'
+import FoundersProof from '../components/FoundersProof'
 import ProjectsCarousel from '../components/ProjectsCarousel'
 import CTABand from '../components/CTABand'
 import { tiers, onboardingCta } from '../site.config'
@@ -45,21 +46,8 @@ export default function Home() {
       {/* 3. How we work (scroll-driven system diagram) */}
       <HowItWorks />
 
-      {/* 3. Who we are */}
-      <section className="bg-canvas px-5 py-12">
-        <div className="lh-surface-d-lg mx-auto max-w-5xl p-10 text-center sm:p-14">
-          <p className="lh-h2 mx-auto max-w-3xl text-fg">
-            We’re small business owners who learned AI the hard way, so you
-            don’t have to.
-          </p>
-          <p className="mx-auto mt-6 max-w-3xl text-muted lh-body-lg">
-            We went through all the tedious work of learning AI and building it
-            into our own businesses. Now we take everything we’ve learned and
-            use it to help other owners grow, without the months of trial and
-            error.
-          </p>
-        </div>
-      </section>
+      {/* 3. Who we are (founders / credibility) */}
+      <FoundersProof />
 
       {/* 4. Projects: carousel */}
       <ProjectsCarousel />
