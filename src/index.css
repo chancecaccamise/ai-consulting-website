@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import './styles/legacy-house.css';
+@import './styles/how.css';
 
 /* Map Legacy House tokens into the Tailwind theme so utilities like
    bg-canvas, text-fg, border-line resolve to brand values. */

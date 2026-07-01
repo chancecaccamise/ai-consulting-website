@@ -1,9 +1,10 @@
 import Button from '../components/Button'
 import BeamsBackground from '../components/BeamsBackground'
 import ServicesBento from '../components/ServicesBento'
+import HowItWorks from '../components/how/HowItWorks'
 import ProjectsCarousel from '../components/ProjectsCarousel'
 import CTABand from '../components/CTABand'
-import { tiers, steps, onboardingCta } from '../site.config'
+import { tiers, onboardingCta } from '../site.config'
 
 export default function Home() {
   return (
@@ -41,35 +42,8 @@ export default function Home() {
       {/* 2. Services overview: bento grid */}
       <ServicesBento />
 
-      {/* 3. How we fix it */}
-      <section id="how" className="scroll-mt-24 bg-canvas">
-        <div className="mx-auto max-w-6xl px-5 py-24">
-          <div className="text-center">
-            <h2 className="lh-h1 mx-auto max-w-3xl text-fg">
-              We come in, find what’s slowing you down, and fix it with AI
-            </h2>
-            <p className="mx-auto mt-6 max-w-2xl text-muted lh-body-lg">
-              You don’t spend months learning AI. We audit your business,
-              improve your systems, and train your team so the gains stick.
-            </p>
-          </div>
-
-          <ol className="mt-16 grid gap-6 md:grid-cols-4">
-            {steps.map((step) => (
-              <li
-                key={step.n}
-                className="lh-surface-d rise-soft flex flex-col items-center p-7 text-center"
-              >
-                <span className="lh-mono lh-accent-text text-sm">
-                  0{step.n}
-                </span>
-                <h3 className="lh-h4 mt-4 text-fg">{step.title}</h3>
-                <p className="mt-3 text-sm text-muted">{step.desc}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
+      {/* 3. How we work (scroll-driven system diagram) */}
+      <HowItWorks />
 
       {/* 3. Who we are */}
       <section className="bg-canvas px-5 py-12">
@@ -92,7 +66,7 @@ export default function Home() {
 
       {/* 6. Pricing cards */}
       <section className="bg-canvas">
-        <div className="mx-auto max-w-6xl px-5 py-24">
+        <div className="mx-auto max-w-[90rem] px-5 py-24">
           <div className="text-center">
             <h2 className="lh-h1 text-fg">Ways to work with us</h2>
             <p className="mx-auto mt-6 max-w-2xl text-muted lh-body-lg">

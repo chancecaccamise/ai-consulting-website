@@ -6,7 +6,7 @@ export default function Footer() {
   const year = 2026 // static build; update or compute as needed
   return (
     <footer className="border-t border-line bg-canvas">
-      <div className="mx-auto max-w-6xl px-5 py-16">
+      <div className="mx-auto max-w-[90rem] px-5 py-16">
         <div className="flex flex-col gap-12 md:flex-row md:justify-between">
           <div className="max-w-xs">
             <div className="flex items-center gap-3">

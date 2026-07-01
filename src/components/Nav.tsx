@@ -40,7 +40,7 @@ export default function Nav() {
           : 'border-b border-line bg-canvas/80 backdrop-blur-md'
       }`}
     >
-      <div className="mx-auto flex h-[72px] max-w-6xl items-center justify-between px-5">
+      <div className="mx-auto flex h-[72px] max-w-[90rem] items-center justify-between px-5">
         <Link
           to="/"
           className="flex items-center gap-3"

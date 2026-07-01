@@ -22,7 +22,7 @@ export default function Services() {
       </section>
 
       <section className="bg-canvas">
-        <div className="mx-auto max-w-6xl px-5 py-12">
+        <div className="mx-auto max-w-[90rem] px-5 py-12">
           <div className="grid gap-6 lg:grid-cols-3">
             {tiers.map((tier, i) => (
               <div

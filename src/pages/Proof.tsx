@@ -14,7 +14,7 @@ export default function Proof() {
       </section>
 
       <section className="bg-canvas">
-        <div className="mx-auto max-w-6xl px-5 py-12">
+        <div className="mx-auto max-w-[90rem] px-5 py-12">
           <div className="grid gap-6 md:grid-cols-3">
             {caseStudies.map((cs) => (
               <article

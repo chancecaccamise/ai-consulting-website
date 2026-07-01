@@ -8,38 +8,30 @@
 
 @font-face {
   font-family: 'Media Sans Extended';
-  src: url('/fonts/MediaSansExtended-Light.ttf') format('truetype');
+  src: url('/fonts/MediaSansExtended-Light.woff2') format('woff2');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Media Sans Extended';
-  src: url('/fonts/MediaSansExtended-Black.ttf') format('truetype');
+  src: url('/fonts/MediaSansExtended-Black.woff2') format('woff2');
   font-weight: 900;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Media Sans Extended';
-  src: url('/fonts/MediaSansExtended-Ultra.ttf') format('truetype');
+  src: url('/fonts/MediaSansExtended-Ultra.woff2') format('woff2');
   font-weight: 950;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Montserrat';
-  src: url('/fonts/Montserrat-VariableFont_wght.ttf') format('truetype-variations');
+  src: url('/fonts/Montserrat-VariableFont_wght.woff2') format('woff2');
   font-weight: 100 900;
   font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Montserrat';
-  src: url('/fonts/Montserrat-Italic-VariableFont_wght.ttf')
-    format('truetype-variations');
-  font-weight: 100 900;
-  font-style: italic;
   font-display: swap;
 }
 

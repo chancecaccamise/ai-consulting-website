@@ -1,0 +1,69 @@
+/* ============================================================
+   HOW WE WORK — ambient scene loops
+   Pure-CSS loops for the four diagram scenes. Each is applied
+   only while its scene is active + on screen (class toggled in
+   JS) so nothing animates off-step. The global
+   prefers-reduced-motion block in legacy-house.css zeroes these
+   durations as a backstop.
+   ============================================================ */
+
+/* Scene 2 — bottleneck / jam markers pulse */
+@keyframes how-flame-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+/* Scene 3 — green automation flow along the pipeline (dash marches) */
+@keyframes how-flow {
+  to {
+    stroke-dashoffset: -32;
+  }
+}
+
+/* Scene 3 — automation gear rotates */
+@keyframes how-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Scene 1 — radar ring sweeps outward from the hub */
+@keyframes how-radiate {
+  from {
+    r: 40;
+    opacity: 0.55;
+  }
+  to {
+    r: 168;
+    opacity: 0;
+  }
+}
+
+/* --- helper classes (applied conditionally from SystemDiagram) --- */
+.how-flame-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: how-flame-pulse 1.4s var(--lh-ease-out, ease-in-out) infinite;
+}
+
+.how-flow {
+  stroke-dasharray: 6 10;
+  animation: how-flow 0.9s linear infinite;
+}
+
+.how-spin {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: how-spin 3.2s linear infinite;
+}
+
+.how-radiate {
+  animation: how-radiate 2.6s ease-out infinite;
+}

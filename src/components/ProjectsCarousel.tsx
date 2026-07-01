@@ -58,7 +58,7 @@ export default function ProjectsCarousel() {
 
   return (
     <section className="bg-canvas">
-      <div className="mx-auto max-w-6xl px-5 py-24">
+      <div className="mx-auto max-w-[90rem] px-5 py-24">
         {/* Header */}
         <div className="flex items-end justify-between gap-8">
           <div className="max-w-2xl">
