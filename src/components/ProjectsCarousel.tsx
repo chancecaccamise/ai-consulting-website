@@ -2,16 +2,6 @@ import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { caseStudies } from '../site.config'
 
-// Dark gradient placeholders stand in for project imagery (swap a real image
-// in per card later). Each card cycles through one for visual variety.
-const gradients = [
-  'linear-gradient(155deg, #0b3b2e, #047857)',
-  'linear-gradient(155deg, #1e293b, #334155)',
-  'linear-gradient(155deg, #1a1a1a, #2b2b2b)',
-  'linear-gradient(155deg, #06231f, #0e4f47)',
-  'linear-gradient(155deg, #2a2440, #3b3357)',
-]
-
 function Chevron({ dir }: { dir: 'left' | 'right' }) {
   return (
     <svg
@@ -95,12 +85,12 @@ export default function ProjectsCarousel() {
             onScroll={handleScroll}
             className="flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
-            {caseStudies.map((cs, i) => (
+            {caseStudies.map((cs) => (
               <Link
                 key={cs.name}
-                to="/proof"
+                to={`/proof/${cs.slug}`}
                 className="group relative h-[460px] w-[86%] shrink-0 snap-start overflow-hidden rounded-2xl sm:w-[420px] md:w-[460px]"
-                style={{ background: gradients[i % gradients.length] }}
+                style={{ background: cs.gradient }}
               >
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/10" />
                 <span className="absolute left-5 top-5 z-10 rounded-full bg-white/15 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">

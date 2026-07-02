@@ -52,7 +52,12 @@ export default function Footer() {
           <span>
             © {year} {site.studio}. All rights reserved.
           </span>
-          <span>Built for local small businesses.</span>
+          <div className="flex items-center gap-4">
+            <span>Built for local small businesses.</span>
+            <Link to="/admin" className="transition-colors hover:text-fg">
+              Admin
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

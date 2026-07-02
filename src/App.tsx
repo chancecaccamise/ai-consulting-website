@@ -5,8 +5,10 @@ import Home from './pages/Home'
 import Audit from './pages/Audit'
 import Services from './pages/Services'
 import Proof from './pages/Proof'
+import ProjectDetail from './pages/ProjectDetail'
 import About from './pages/About'
 import Book from './pages/Book'
+import AdminDashboard from './pages/AdminDashboard'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -26,8 +28,10 @@ export default function App() {
           <Route path="/audit" element={<Audit />} />
           <Route path="/services" element={<Services />} />
           <Route path="/proof" element={<Proof />} />
+          <Route path="/proof/:slug" element={<ProjectDetail />} />
           <Route path="/about" element={<About />} />
           <Route path="/book" element={<Book />} />
+          <Route path="/admin" element={<AdminDashboard />} />
         </Route>
       </Routes>
     </>
