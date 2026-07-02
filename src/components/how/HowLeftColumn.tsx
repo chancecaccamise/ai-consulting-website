@@ -18,18 +18,9 @@ export default function HowLeftColumn({ steps, activeStep, fill }: Props) {
 
   return (
     <div>
-      <div className="flex items-center gap-3">
-        <span className="lh-eyebrow lh-accent-text">How we work</span>
-        <span className="h-px w-12 bg-line" />
-      </div>
-
-      <h2 className="lh-h1 mt-5 max-w-xl text-fg">
+      <h2 className="lh-h1 max-w-xl text-fg">
         We find what&rsquo;s slowing you down, and fix it with AI
       </h2>
-      <p className="mt-6 max-w-md text-muted lh-body-lg">
-        You don&rsquo;t spend months learning AI. We audit your business, improve
-        your systems, and train your team so the gains stick.
-      </p>
 
       {/* Vertical 01–04 tracker with the active step copy to its right */}
       <div className="mt-12 flex gap-7">
@@ -44,8 +35,8 @@ export default function HowLeftColumn({ steps, activeStep, fill }: Props) {
               key={s.n}
               className={`lh-mono relative z-10 grid h-9 w-9 place-items-center rounded-full border text-xs transition-colors duration-300 ${
                 i <= activeStep
-                  ? 'border-green bg-canvas text-green'
-                  : 'border-line bg-canvas text-subtle'
+                  ? 'border-green bg-surface text-green'
+                  : 'border-line bg-surface text-subtle'
               }`}
             >
               0{s.n}
@@ -62,11 +53,16 @@ export default function HowLeftColumn({ steps, activeStep, fill }: Props) {
               exit={{ opacity: 0, y: -16 }}
               transition={{ duration: 0.32, ease: [0.2, 0.7, 0.15, 1] }}
             >
-              <span className="lh-mono lh-accent-text text-sm">
-                STEP 0{step.n}
-              </span>
-              <h3 className="lh-h2 mt-3 text-fg">{step.title}</h3>
-              <p className="mt-3 max-w-md text-muted lh-body-lg">{step.desc}</p>
+              <div className="flex items-center gap-3">
+                <span className="lh-mono lh-accent-text text-sm">
+                  STEP 0{step.n}
+                </span>
+                <span className="lh-mono text-subtle text-sm">
+                  / 0{steps.length}
+                </span>
+              </div>
+              <h3 className="lh-h2 mt-4 text-fg">{step.title}</h3>
+              <p className="mt-4 max-w-md text-muted lh-body-lg">{step.desc}</p>
             </motion.div>
           </AnimatePresence>
         </div>

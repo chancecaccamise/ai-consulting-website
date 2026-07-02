@@ -13,7 +13,7 @@ export default function HowItWorks() {
   const pinned = isDesktop && !reduced
 
   return (
-    <section id="how" className="scroll-mt-24 bg-canvas">
+    <section id="how" className="scroll-mt-24 bg-surface">
       {pinned ? (
         <HowItWorksPinned steps={steps} />
       ) : (

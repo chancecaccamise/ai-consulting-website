@@ -13,7 +13,7 @@ export default function CTABand({
   cta = primaryCta,
 }: Props) {
   return (
-    <section className="bg-canvas px-5 py-24">
+    <section className="bg-surface px-5 py-24">
       <div className="lh-surface-d-lg mx-auto max-w-4xl overflow-hidden px-8 py-16 text-center sm:px-16">
         <h2 className="lh-h1 text-fg">{title}</h2>
         <p className="mx-auto mt-5 max-w-xl text-muted lh-body-lg">{subtitle}</p>
