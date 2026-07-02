@@ -9,6 +9,7 @@ import BookingStepper from '../components/booking/BookingStepper'
 import BookingCalendar, {
   formatDateKey,
 } from '../components/booking/BookingCalendar'
+import { supabase } from '../lib/supabase'
 
 type Details = {
   name: string
@@ -37,6 +38,8 @@ export default function Book() {
   const [time, setTime] = useState<string | null>(null)
   const [details, setDetails] = useState<Details>(emptyDetails)
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const service = useMemo(
     () => bookingServices.find((s) => s.id === serviceId) ?? null,
@@ -54,9 +57,32 @@ export default function Book() {
   const detailsValid =
     details.name.trim() !== '' && details.email.trim() !== ''
 
-  const handleSubmit = () => {
-    // TODO: persist the booking to Supabase here. Shape ready to insert:
-    // { serviceId, focus, dateKey, time, ...details }
+  const handleSubmit = async () => {
+    if (submitting) return
+    setSubmitting(true)
+    setError(null)
+
+    const { error: insertError } = await supabase.from('bookings').insert({
+      service_id: serviceId,
+      focus,
+      date: dateKey,
+      time,
+      name: details.name.trim(),
+      email: details.email.trim(),
+      business: details.business.trim() || null,
+      phone: details.phone.trim() || null,
+      notes: details.notes.trim() || null,
+    })
+
+    setSubmitting(false)
+
+    if (insertError) {
+      setError(
+        'Something went wrong saving your booking. Please try again, or email us directly.',
+      )
+      return
+    }
+
     setSubmitted(true)
   }
 
@@ -330,11 +356,17 @@ export default function Book() {
                 />
               </div>
 
+              {error && (
+                <p className="mt-6 rounded-lg border border-red-500/30 bg-red-500/5 px-4 py-3 text-sm text-red-600">
+                  {error}
+                </p>
+              )}
+
               <StepNav
                 onBack={back}
                 onNext={handleSubmit}
-                nextLabel="Confirm booking"
-                nextDisabled={!detailsValid}
+                nextLabel={submitting ? 'Booking…' : 'Confirm booking'}
+                nextDisabled={!detailsValid || submitting}
               />
             </div>
           )}

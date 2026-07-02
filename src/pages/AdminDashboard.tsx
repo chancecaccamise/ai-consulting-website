@@ -1,67 +1,28 @@
-import { useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
+import type { FormEvent } from 'react'
+import type { Session } from '@supabase/supabase-js'
 import { bookingServices } from '../booking.config'
-
-// NOTE: Design shell only. Bookings are hard-coded sample rows so we can lay out
-// the dashboard. When Supabase is wired up:
-//   1. Gate this route behind auth (Supabase session).
-//   2. Replace `sampleBookings` with a `bookings` table query.
-//   3. Wire the status control to an update mutation.
+import { supabase } from '../lib/supabase'
+import { formatDateKey } from '../components/booking/BookingCalendar'
 
 type BookingStatus = 'new' | 'confirmed' | 'completed' | 'cancelled'
 
 type BookingRow = {
   id: string
-  name: string
-  email: string
-  business: string
-  serviceId: string
+  created_at: string
+  service_id: string
+  focus: string[]
   date: string
   time: string
+  name: string
+  email: string
+  business: string | null
+  phone: string | null
+  notes: string | null
   status: BookingStatus
 }
 
-const sampleBookings: BookingRow[] = [
-  {
-    id: '1',
-    name: 'Dana Reed',
-    email: 'dana@brightsidehvac.com',
-    business: 'Brightside HVAC',
-    serviceId: 'ai-audit',
-    date: 'Jul 8, 2026',
-    time: '10:00 AM',
-    status: 'new',
-  },
-  {
-    id: '2',
-    name: 'Marcus Lee',
-    email: 'marcus@leelogistics.co',
-    business: 'Lee Logistics',
-    serviceId: 'done-for-you',
-    date: 'Jul 9, 2026',
-    time: '2:00 PM',
-    status: 'confirmed',
-  },
-  {
-    id: '3',
-    name: 'Priya Shah',
-    email: 'priya@shahdental.com',
-    business: 'Shah Dental',
-    serviceId: 'team-training',
-    date: 'Jul 11, 2026',
-    time: '1:00 PM',
-    status: 'confirmed',
-  },
-  {
-    id: '4',
-    name: 'Tom Byrne',
-    email: 'tom@byrnebuilds.com',
-    business: 'Byrne Builds',
-    serviceId: 'consulting',
-    date: 'Jul 3, 2026',
-    time: '9:00 AM',
-    status: 'completed',
-  },
-]
+const STATUSES: BookingStatus[] = ['new', 'confirmed', 'completed', 'cancelled']
 
 const statusStyle: Record<BookingStatus, string> = {
   new: 'bg-green/10 text-green',
@@ -70,38 +31,168 @@ const statusStyle: Record<BookingStatus, string> = {
   cancelled: 'bg-red-500/10 text-red-600',
 }
 
-const FILTERS: ('all' | BookingStatus)[] = [
-  'all',
-  'new',
-  'confirmed',
-  'completed',
-  'cancelled',
-]
+const FILTERS: ('all' | BookingStatus)[] = ['all', ...STATUSES]
 
 const serviceName = (id: string) =>
   bookingServices.find((s) => s.id === id)?.name ?? id
 
 export default function AdminDashboard() {
+  const [session, setSession] = useState<Session | null>(null)
+  const [checkingAuth, setCheckingAuth] = useState(true)
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data }) => {
+      setSession(data.session)
+      setCheckingAuth(false)
+    })
+    const { data: sub } = supabase.auth.onAuthStateChange((_event, s) => {
+      setSession(s)
+    })
+    return () => sub.subscription.unsubscribe()
+  }, [])
+
+  if (checkingAuth) {
+    return (
+      <section className="bg-canvas min-h-screen">
+        <div className="mx-auto max-w-[80rem] px-5 pt-32 text-muted">Loading…</div>
+      </section>
+    )
+  }
+
+  if (!session) return <Login />
+
+  return <Dashboard email={session.user.email ?? ''} />
+}
+
+// ---------------------------------------------------------------------------
+// Login gate
+// ---------------------------------------------------------------------------
+function Login() {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState<string | null>(null)
+  const [submitting, setSubmitting] = useState(false)
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault()
+    setSubmitting(true)
+    setError(null)
+    const { error: signInError } = await supabase.auth.signInWithPassword({
+      email: email.trim(),
+      password,
+    })
+    setSubmitting(false)
+    if (signInError) setError('Incorrect email or password.')
+    // On success, onAuthStateChange updates the session and swaps the view.
+  }
+
+  return (
+    <section className="bg-canvas min-h-screen">
+      <div className="mx-auto flex max-w-md flex-col px-5 pt-32">
+        <span className="lh-eyebrow lh-accent-text">Admin</span>
+        <h1 className="lh-h2 mt-2 text-fg">Sign in</h1>
+        <p className="mt-2 text-sm text-muted">
+          Enter your admin credentials to view bookings.
+        </p>
+
+        <form onSubmit={handleSubmit} className="lh-surface-d-lg mt-8 space-y-5 p-6">
+          <div>
+            <label className="lh-label text-fg" htmlFor="admin-email">
+              Email
+            </label>
+            <input
+              id="admin-email"
+              type="email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="mt-2 w-full rounded-lg border border-line bg-surface px-4 py-3 text-sm text-fg outline-none transition-colors focus:border-green focus:ring-2 focus:ring-green/25"
+            />
+          </div>
+          <div>
+            <label className="lh-label text-fg" htmlFor="admin-password">
+              Password
+            </label>
+            <input
+              id="admin-password"
+              type="password"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="mt-2 w-full rounded-lg border border-line bg-surface px-4 py-3 text-sm text-fg outline-none transition-colors focus:border-green focus:ring-2 focus:ring-green/25"
+            />
+          </div>
+
+          {error && <p className="text-sm text-red-600">{error}</p>}
+
+          <button
+            type="submit"
+            disabled={submitting}
+            className="lh-btn lh-btn-primary w-full disabled:cursor-not-allowed disabled:opacity-40"
+          >
+            {submitting ? 'Signing in…' : 'Sign in'}
+          </button>
+        </form>
+      </div>
+    </section>
+  )
+}
+
+// ---------------------------------------------------------------------------
+// Dashboard (authenticated)
+// ---------------------------------------------------------------------------
+function Dashboard({ email }: { email: string }) {
+  const [bookings, setBookings] = useState<BookingRow[]>([])
+  const [loading, setLoading] = useState(true)
+  const [loadError, setLoadError] = useState<string | null>(null)
   const [filter, setFilter] = useState<'all' | BookingStatus>('all')
 
+  const load = useCallback(async () => {
+    setLoading(true)
+    setLoadError(null)
+    const { data, error } = await supabase
+      .from('bookings')
+      .select('*')
+      .order('date', { ascending: false })
+      .order('created_at', { ascending: false })
+    setLoading(false)
+    if (error) {
+      setLoadError('Could not load bookings.')
+      return
+    }
+    setBookings((data ?? []) as BookingRow[])
+  }, [])
+
+  useEffect(() => {
+    load()
+  }, [load])
+
+  const updateStatus = async (id: string, status: BookingStatus) => {
+    const prev = bookings
+    // Optimistic update.
+    setBookings((rows) =>
+      rows.map((r) => (r.id === id ? { ...r, status } : r)),
+    )
+    const { error } = await supabase
+      .from('bookings')
+      .update({ status })
+      .eq('id', id)
+    if (error) setBookings(prev) // roll back on failure
+  }
+
   const rows =
-    filter === 'all'
-      ? sampleBookings
-      : sampleBookings.filter((b) => b.status === filter)
+    filter === 'all' ? bookings : bookings.filter((b) => b.status === filter)
 
   const stats = [
-    { label: 'Total bookings', value: sampleBookings.length },
-    {
-      label: 'New',
-      value: sampleBookings.filter((b) => b.status === 'new').length,
-    },
+    { label: 'Total bookings', value: bookings.length },
+    { label: 'New', value: bookings.filter((b) => b.status === 'new').length },
     {
       label: 'Confirmed',
-      value: sampleBookings.filter((b) => b.status === 'confirmed').length,
+      value: bookings.filter((b) => b.status === 'confirmed').length,
     },
     {
       label: 'Completed',
-      value: sampleBookings.filter((b) => b.status === 'completed').length,
+      value: bookings.filter((b) => b.status === 'completed').length,
     },
   ]
 
@@ -113,9 +204,23 @@ export default function AdminDashboard() {
             <span className="lh-eyebrow lh-accent-text">Admin</span>
             <h1 className="lh-h1 mt-2 text-fg">Bookings</h1>
           </div>
-          <span className="rounded-full border border-line bg-surface px-3 py-1.5 text-xs font-medium text-subtle">
-            Sample data · connect Supabase to go live
-          </span>
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={load}
+              className="rounded-full border border-line bg-surface px-4 py-1.5 text-sm font-medium text-muted transition-colors hover:border-fg/30"
+            >
+              Refresh
+            </button>
+            <span className="text-sm text-subtle">{email}</span>
+            <button
+              type="button"
+              onClick={() => supabase.auth.signOut()}
+              className="rounded-full border border-line bg-surface px-4 py-1.5 text-sm font-medium text-muted transition-colors hover:border-fg/30"
+            >
+              Sign out
+            </button>
+          </div>
         </div>
 
         {/* Stat tiles */}
@@ -168,32 +273,49 @@ export default function AdminDashboard() {
                   >
                     <td className="px-6 py-4">
                       <div className="font-semibold text-fg">{b.name}</div>
-                      <div className="text-muted">{b.business}</div>
+                      {b.business && (
+                        <div className="text-muted">{b.business}</div>
+                      )}
                       <div className="text-xs text-subtle">{b.email}</div>
+                      {b.phone && (
+                        <div className="text-xs text-subtle">{b.phone}</div>
+                      )}
                     </td>
                     <td className="px-6 py-4 text-fg">
-                      {serviceName(b.serviceId)}
+                      {serviceName(b.service_id)}
                     </td>
                     <td className="px-6 py-4 text-fg">
-                      {b.date}
+                      {formatDateKey(b.date)}
                       <span className="text-subtle"> · {b.time}</span>
                     </td>
                     <td className="px-6 py-4">
-                      <span
-                        className={`inline-block rounded-full px-3 py-1 text-xs font-semibold capitalize ${statusStyle[b.status]}`}
+                      <select
+                        value={b.status}
+                        onChange={(e) =>
+                          updateStatus(b.id, e.target.value as BookingStatus)
+                        }
+                        className={`cursor-pointer rounded-full border-0 px-3 py-1 text-xs font-semibold capitalize outline-none ${statusStyle[b.status]}`}
                       >
-                        {b.status}
-                      </span>
+                        {STATUSES.map((s) => (
+                          <option key={s} value={s}>
+                            {s}
+                          </option>
+                        ))}
+                      </select>
                     </td>
                   </tr>
                 ))}
-                {rows.length === 0 && (
+                {!loading && rows.length === 0 && (
                   <tr>
-                    <td
-                      colSpan={4}
-                      className="px-6 py-12 text-center text-muted"
-                    >
-                      No bookings in this view.
+                    <td colSpan={4} className="px-6 py-12 text-center text-muted">
+                      {loadError ?? 'No bookings in this view.'}
+                    </td>
+                  </tr>
+                )}
+                {loading && (
+                  <tr>
+                    <td colSpan={4} className="px-6 py-12 text-center text-muted">
+                      Loading bookings…
                     </td>
                   </tr>
                 )}
