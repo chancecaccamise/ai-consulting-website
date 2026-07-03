@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import {
   bookingFocusAreas,
   bookingServiceGroups,
@@ -10,6 +10,7 @@ import BookingCalendar, {
   formatDateKey,
 } from '../components/booking/BookingCalendar'
 import { supabase } from '../lib/supabase'
+import { unavailableSlotSet } from '../lib/availability'
 
 type Details = {
   name: string
@@ -40,6 +41,37 @@ export default function Book() {
   const [submitted, setSubmitted] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [unavailableTimes, setUnavailableTimes] = useState<Set<string>>(
+    new Set(),
+  )
+  const [loadingSlots, setLoadingSlots] = useState(false)
+
+  // Fetch which slots are taken (bookings + admin blocks) for the chosen day,
+  // then apply the 45-minute buffer to find every unavailable slot.
+  useEffect(() => {
+    if (!dateKey) {
+      setUnavailableTimes(new Set())
+      return
+    }
+    let active = true
+    setLoadingSlots(true)
+    supabase
+      .from('unavailable_slots')
+      .select('time')
+      .eq('date', dateKey)
+      .then(({ data }) => {
+        if (!active) return
+        const taken = ((data ?? []) as { time: string }[]).map((r) => r.time)
+        const unavailable = unavailableSlotSet(taken)
+        setUnavailableTimes(unavailable)
+        // Drop the selected time if it's no longer bookable.
+        setTime((t) => (t && unavailable.has(t) ? null : t))
+        setLoadingSlots(false)
+      })
+    return () => {
+      active = false
+    }
+  }, [dateKey])
 
   const service = useMemo(
     () => bookingServices.find((s) => s.id === serviceId) ?? null,
@@ -77,9 +109,24 @@ export default function Book() {
     setSubmitting(false)
 
     if (insertError) {
-      setError(
-        'Something went wrong saving your booking. Please try again, or email us directly.',
-      )
+      if (insertError.code === '23505') {
+        // Someone grabbed this slot between page load and submit.
+        setError(
+          'Sorry — that time was just booked by someone else. Please go back and choose another slot.',
+        )
+        if (dateKey) {
+          const { data } = await supabase
+            .from('unavailable_slots')
+            .select('time')
+            .eq('date', dateKey)
+          const taken = ((data ?? []) as { time: string }[]).map((r) => r.time)
+          setUnavailableTimes(unavailableSlotSet(taken))
+        }
+      } else {
+        setError(
+          'Something went wrong saving your booking. Please try again, or email us directly.',
+        )
+      }
       return
     }
 
@@ -257,22 +304,38 @@ export default function Book() {
                   <h3 className="text-sm font-semibold text-fg">
                     Available times — {formatDateKey(dateKey)}
                   </h3>
-                  <div className="mt-3 grid grid-cols-3 gap-2 sm:grid-cols-4">
-                    {bookingTimeSlots.map((t) => (
-                      <button
-                        key={t}
-                        type="button"
-                        onClick={() => setTime(t)}
-                        className={`rounded-lg border px-3 py-2.5 text-sm font-medium transition-colors ${
-                          time === t
-                            ? 'border-green bg-green text-white'
-                            : 'border-line bg-surface text-fg hover:border-fg/30'
-                        }`}
-                      >
-                        {t}
-                      </button>
-                    ))}
-                  </div>
+                  {loadingSlots ? (
+                    <p className="mt-3 text-sm text-muted">
+                      Checking availability…
+                    </p>
+                  ) : bookingTimeSlots.every((t) => unavailableTimes.has(t)) ? (
+                    <p className="mt-3 text-sm text-muted">
+                      No times left on this day — please choose another date.
+                    </p>
+                  ) : (
+                    <div className="mt-3 grid grid-cols-3 gap-2 sm:grid-cols-4">
+                      {bookingTimeSlots.map((t) => {
+                        const taken = unavailableTimes.has(t)
+                        return (
+                          <button
+                            key={t}
+                            type="button"
+                            disabled={taken}
+                            onClick={() => setTime(t)}
+                            className={`rounded-lg border px-3 py-2.5 text-sm font-medium transition-colors ${
+                              taken
+                                ? 'cursor-not-allowed border-line bg-surface text-subtle/40 line-through'
+                                : time === t
+                                  ? 'border-green bg-green text-white'
+                                  : 'border-line bg-surface text-fg hover:border-fg/30'
+                            }`}
+                          >
+                            {t}
+                          </button>
+                        )
+                      })}
+                    </div>
+                  )}
                 </div>
               )}
 

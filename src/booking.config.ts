@@ -84,3 +84,8 @@ export const bookingTimeSlots = [
   '3:00 PM',
   '4:00 PM',
 ] as const
+
+// How long each appointment reserves. A booking blocks out this many minutes
+// starting at the chosen slot, so we always have time with a client before the
+// next meeting. Any other slot whose window overlaps is treated as unavailable.
+export const appointmentDurationMin = 45
